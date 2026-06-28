@@ -28,7 +28,7 @@
           >
             <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
           </svg>
-          NARUTO<span>GOLD</span>
+           NARUTO<span>GOLD</span>
         </a>
         <nav>
           <a href="#services">Dịch vụ</a>
@@ -45,11 +45,11 @@
         <div class="container hero-grid">
           <div class="hero-content animate">
             <div class="eyebrow">
-              <span class="pulse-dot"></span> HỆ THỐNG BOOSTING TIÊU CHUẨN META
+              <span class="pulse-dot"></span> HỆ THỐNG AN TOÀN TIÊU CHUẨN
               2026
             </div>
             <h1>
-              Nhanh chóng, tuyệt mật và áp đảo cho game thủ <span>Naruto</span>
+              Nhanh chóng, bảo mật <span>Naruto Online MMORPG</span>
             </h1>
             <p>
               Giải pháp cày vàng, tối ưu lực chiến, vượt phụ bản thần tốc. Đội
@@ -461,9 +461,11 @@
                 <div class="input-group">
                   <label>Zalo / SĐT nhận thông báo</label>
                   <input
-                    type="text"
+                    type="tel"
                     name="contactPhone"
-                    placeholder="09xx xxx xxx"
+                    placeholder="09xxxxxxxx"
+                    pattern="^0[0-9]{9,10}$"
+                    title="Nhập SĐT bắt đầu 0, 10 hoặc 11 chữ số"
                     required
                   />
                 </div>
@@ -473,17 +475,17 @@
                   <input
                     type="email"
                     name="customerEmail"
-                    placeholder="khachhang@gmail.com"
+                    placeholder="demo123@gmail.com"
                     required
                   />
                 </div>
 
                 <div class="input-group">
-                  <label>Tài khoản Game (Username/ID)</label>
+                  <label>Tài khoản Game (Username / Email)</label>
                   <input
                     type="text"
                     name="gameAccount"
-                    placeholder="Nhập tài khoản đăng nhập..."
+                    placeholder="Ví dụ: naruto99 hoặc kage@gmail.com"
                     required
                   />
                 </div>
@@ -494,6 +496,8 @@
                     type="password"
                     name="gamePassword"
                     placeholder="Nhập mật khẩu..."
+                    minlength="6"
+                    title="Mật khẩu phải có ít nhất 6 ký tự"
                     required
                   />
                 </div>
@@ -504,7 +508,6 @@
                     name="note"
                     rows="3"
                     placeholder="Server đang chơi, mục tiêu cần đạt..."
-                    required
                   ></textarea>
                 </div>
 

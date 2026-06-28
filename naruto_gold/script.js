@@ -79,6 +79,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const formData = new FormData(form);
 
+    // Kiểm tra định dạng bổ sung
+    const phone = formData.get("contactPhone").replace(/\D/g, "");
+    const gameAccount = formData.get("gameAccount").trim();
+    const gamePassword = formData.get("gamePassword");
+
+    // Kiểm tra xem có phải Username truyền thống không (3-30 ký tự)
+    const isUsername = /^[A-Za-z0-9_.-]{3,30}$/.test(gameAccount);
+    // Kiểm tra xem có phải định dạng Email không (vd: kage@gmail.com)
+    const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(gameAccount);
+
+    if (!/^0\d{9,10}$/.test(phone)) {
+      Swal.fire({
+        icon: "error",
+        title: "Sai định dạng SĐT",
+        text: "SĐT phải bắt đầu bằng 0 và có 10 hoặc 11 chữ số.",
+      });
+      return;
+    }
+
+    if (!isUsername && !isEmail) {
+      Swal.fire({
+        icon: "error",
+        title: "Sai định dạng Tài khoản Game",
+        text: "Vui lòng nhập Username (3-30 ký tự) hoặc một địa chỉ Email hợp lệ.",
+      });
+      return;
+    }
+
+    if (gamePassword.length < 6) {
+      Swal.fire({
+        icon: "error",
+        title: "Sai định dạng Mật khẩu",
+        text: "Mật khẩu phải có ít nhất 6 ký tự.",
+      });
+      return;
+    }
+
     // BƯỚC 1: XÁC NHẬN (Popup dừng lại ở đây)
     const confirmResult = await Swal.fire({
       title: "Xác nhận gửi đơn hàng",
