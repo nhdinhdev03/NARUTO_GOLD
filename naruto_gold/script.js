@@ -35,6 +35,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 4000);
   }
 
+  /* 2a. Thông báo khi mở trang */
+  function showLandingNotice() {
+    Swal.fire({
+      title: "Thông báo ưu tiên",
+      icon: "info",
+      html: `Ưu tiên khách hàng có phôi giao dịch ám <strong>450</strong>, Nếu có <strong>10</strong> hoặc nhiều hơn thì liên hệ ngay!`,
+      confirmButtonText: "Đã hiểu",
+      timer: 10000,
+      timerProgressBar: true,
+      allowOutsideClick: true,
+      showCloseButton: true,
+    });
+  }
+
+  showLandingNotice();
+
   /* 3. Logic xử lý Form DUY NHẤT */
   const form = document.getElementById("orderForm");
 

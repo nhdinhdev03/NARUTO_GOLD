@@ -382,6 +382,29 @@ nav a:hover {
   font-size: 2.2rem;
   letter-spacing: -0.02em;
 }
+.section-header .section-highlight {
+  display: inline-block;
+  background: linear-gradient(90deg, #ff9b00, #00e5ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+}
+.section-header .section-highlight::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 80%;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 106, 0, 0.35);
+}
+.section-note {
+  margin-top: 0.75rem;
+  color: #d4d7e4;
+  font-size: 0.95rem;
+  max-width: 36rem;
+}
 
 /* GRID CARDS */
 .cards-grid,
@@ -664,6 +687,32 @@ nav a:hover {
 .c-card strong {
   font-family: "Space Grotesk", sans-serif;
   font-size: 1.05rem;
+}
+.qr-block {
+  margin-top: 1.8rem;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.qr-label,
+.qr-account {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  text-align: center;
+  margin-bottom: 0.9rem;
+}
+.qr-account {
+  color: var(--text);
+  font-weight: 700;
+  line-height: 1.4;
+}
+.qr-block img {
+  display: block;
+  width: min(220px, 100%);
+  margin: 0 auto 1rem;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 .contact-form-card {
   padding: 2.2rem;
