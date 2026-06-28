@@ -119,7 +119,7 @@ dist-ssr
 *.local
 
 
-.env
+
 /netlify.toml
 
 portfolio-fes
