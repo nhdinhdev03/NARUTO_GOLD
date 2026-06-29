@@ -167,7 +167,7 @@ app.post("/api/create-order", validateOrderMiddleware, async (req, res) => {
             </div>
           </div>
           <div style="background-color: #03050c; padding: 20px; text-align: center; font-size: 12px; color: #64748b; border-top: 1px solid #1e293b;">
-            <p style="margin: 0;">Nếu có bất kỳ thắc mắc nào, hãy phản hồi trực tiếp email này hoặc gọi Hotline: <strong>0987.654.321</strong></p>
+            <p style="margin: 0;">Nếu có bất kỳ thắc mắc nào, hãy phản hồi trực tiếp email này hoặc Hotline zalo: <strong>0389.307.257</strong></p>
             <p style="margin: 8px 0 0;">© 2026 NarutoGold Agency. All rights reserved.</p>
           </div>
         </div>
