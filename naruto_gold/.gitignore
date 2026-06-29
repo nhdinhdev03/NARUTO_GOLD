@@ -118,7 +118,7 @@ ehthumbs.db
 dist-ssr
 *.local
 
-
+.env
 
 /netlify.toml
 
