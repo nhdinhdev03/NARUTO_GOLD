@@ -137,6 +137,27 @@ nav a:hover {
   color: var(--primary);
 }
 
+/* Header language selector */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.header-actions select#lang-select {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 0.38rem 0.6rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.header-actions select#lang-select:focus {
+  outline: none;
+  box-shadow: 0 0 0 6px rgba(255, 107, 0, 0.08);
+  border-color: var(--primary);
+}
+
 /* HERO SECTION */
 .hero {
   padding: 5.5rem 0 4rem;
