@@ -144,8 +144,8 @@ nav a:hover {
   gap: 0.75rem;
 }
 .header-actions select#lang-select {
-  background: rgba(255, 255, 255, 0.03);
-  color: var(--text);
+
+  color: #000000;
   border: 1px solid rgba(255, 255, 255, 0.06);
   padding: 0.38rem 0.6rem;
   border-radius: 8px;
