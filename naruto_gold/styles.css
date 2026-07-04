@@ -735,6 +735,33 @@ nav a:hover {
   border-radius: 18px;
   text-align: center;
 }
+.counter {
+  display: inline-block;
+  will-change: transform, opacity;
+  transition:
+    text-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+.counter.is-active {
+  animation: counterPulse 0.7s ease-out;
+  text-shadow: 0 0 24px rgba(255, 106, 0, 0.26);
+}
+
+@keyframes counterPulse {
+  0% {
+    transform: translateY(4px) scale(0.96);
+    opacity: 0.75;
+  }
+  60% {
+    transform: translateY(-2px) scale(1.03);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
 .counter-val {
   font-family: "Space Grotesk", sans-serif;
   font-size: 2.5rem;

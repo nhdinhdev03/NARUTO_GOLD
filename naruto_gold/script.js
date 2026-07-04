@@ -1,22 +1,38 @@
 function animateCounter(element) {
+  if (element.dataset.animated === "true") {
+    return;
+  }
+
   const target = Number(element.dataset.target || 0);
   const suffix = element.dataset.suffix || "";
-  const duration = 1200;
+  const prefix = element.dataset.prefix || "";
+  const decimals = Number(element.dataset.decimals || 0);
+  const duration = Number(element.dataset.duration || 1400);
   const startTime = performance.now();
+  const startValue = Number(element.dataset.start || 0);
+
+  const formatValue = (value) => {
+    if (decimals > 0) {
+      return `${prefix}${value.toFixed(decimals)}${suffix}`;
+    }
+    return `${prefix}${Math.round(value).toLocaleString("vi-VN")}${suffix}`;
+  };
 
   const update = (now) => {
     const progress = Math.min((now - startTime) / duration, 1);
     const eased = 1 - Math.pow(1 - progress, 3);
-    const value = Math.round(target * eased);
-    element.textContent = `${value}${suffix}`;
+    const value = startValue + (target - startValue) * eased;
+    element.textContent = formatValue(value);
 
     if (progress < 1) {
       requestAnimationFrame(update);
     } else {
-      element.textContent = `${target}${suffix}`;
+      element.textContent = formatValue(target);
+      element.classList.add("is-active");
     }
   };
 
+  element.dataset.animated = "true";
   requestAnimationFrame(update);
 }
 
