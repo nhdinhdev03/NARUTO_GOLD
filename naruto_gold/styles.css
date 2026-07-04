@@ -142,6 +142,7 @@ nav a:hover {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  margin-left: auto;
 }
 .language-select {
   position: relative;
@@ -294,20 +295,30 @@ nav a:hover {
 
 .hero-highlights {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
   border-top: 1px solid var(--border);
   padding-top: 2rem;
 }
+.highlight-item {
+  padding: 0.95rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
 .highlight-item strong {
   font-family: "Space Grotesk", sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   color: var(--text);
   display: block;
+  margin-bottom: 0.2rem;
 }
 .highlight-item span {
   color: var(--text-muted);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
+  line-height: 1.4;
 }
 
 /* HERO FLOATING CARD */
@@ -1187,14 +1198,34 @@ body.menu-open {
 }
 
 @media (max-width: 768px) {
+  .site-header {
+    padding-right: 0.75rem;
+  }
+
   .header-inner {
     height: auto;
-    padding: 1rem 0;
+    min-height: 68px;
+    padding: 0.9rem 2.8rem 0.9rem 0;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    font-size: 1.15rem;
+  }
+
+  .header-actions {
+    gap: 0.45rem;
+    margin-left: auto;
   }
 
   .nav-toggle {
     display: inline-flex;
-    margin-left: auto;
+    position: absolute;
+    top: 50%;
+    right: 0.2rem;
+    transform: translateY(-50%);
+    margin-left: 0;
   }
 
   .nav-menu {
@@ -1219,7 +1250,11 @@ body.menu-open {
     padding-top: 4rem;
   }
 
-  .hero-highlights,
+  .hero-highlights {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.6rem;
+  }
+
   .feature-grid,
   .trust-grid {
     grid-template-columns: 1fr;
