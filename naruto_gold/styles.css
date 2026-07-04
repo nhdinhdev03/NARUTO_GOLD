@@ -707,9 +707,10 @@ nav a:hover {
 }
 .contact-grid {
   display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
+  grid-template-columns: 1fr;
   gap: 2rem;
   align-items: stretch;
+  justify-items: center;
 }
 .contact-info-card,
 .contact-form-card {
@@ -722,6 +723,10 @@ nav a:hover {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.28);
+}
+.contact-info-card {
+  width: 100%;
+  max-width: 760px;
 }
 .contact-info-card::before,
 .contact-form-card::before {
@@ -891,16 +896,8 @@ nav a:hover {
   color: var(--text);
 }
 
-/* Legacy form styles removed after merging contact blocks */
-  background: rgba(3, 5, 12, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 12px;
-  padding: 0.95rem 1.1rem;
-  color: var(--text);
-  font-family: inherit;
-  font-size: 0.95rem;
-  transition: all 0.2s ease;
-}
+
+
 .input-group input::placeholder,
 .input-group textarea::placeholder {
   color: rgba(132, 146, 166, 0.8);
