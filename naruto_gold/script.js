@@ -1,5 +1,26 @@
+function animateCounter(element) {
+  const target = Number(element.dataset.target || 0);
+  const suffix = element.dataset.suffix || "";
+  const duration = 1200;
+  const startTime = performance.now();
+
+  const update = (now) => {
+    const progress = Math.min((now - startTime) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const value = Math.round(target * eased);
+    element.textContent = `${value}${suffix}`;
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    } else {
+      element.textContent = `${target}${suffix}`;
+    }
+  };
+
+  requestAnimationFrame(update);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-  // --- i18n translations for English and Vietnamese ---
   const translations = {
     vi: {
       "nav.services": "Dịch vụ",
@@ -65,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "pricing.note":
         "Ghi chú: Gửi kèm Server, mục tiêu, nội dung yêu cầu và thông tin tài khoản game.",
       "contact.support_label": "Direct Support",
-      "contact.title": "Kênh điều phối dịch vụ",
+      "contact.title": "Liên hệ",
       "contact.desc":
         "Bạn gặp khó khăn trong việc định hình gói? Kết nối trực tiếp với tổng đài viên để được tư vấn phù hợp và thẩm định acc miễn phí.",
       "contact.form_title": "Liên hệ trực tiếp",
@@ -176,38 +197,96 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   };
 
+  const prefersReducedMotion = globalThis.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+  let currentLang = "vi";
+
   function translatePage(lang) {
     document.documentElement.lang = lang;
-    const els = document.querySelectorAll("[data-i18n]");
-    els.forEach((el) => {
-      const key = el.getAttribute("data-i18n");
-      const txt =
-        (translations[lang] && translations[lang][key]) ||
-        (translations.vi && translations.vi[key]) ||
-        el.innerHTML;
-      el.innerHTML = txt;
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const key = el.dataset.i18n;
+      const translation =
+        translations[lang]?.[key] || translations.vi?.[key] || el.innerHTML;
+      el.innerHTML = translation;
     });
   }
 
-  const langSelect = document.getElementById("lang-select");
-  if (langSelect) {
-    langSelect.addEventListener("change", (e) => {
-      const lang = e.target.value;
-      localStorage.setItem("site_lang", lang);
-      translatePage(lang);
+  function initLanguageSwitcher() {
+    const langSelect = document.getElementById("lang-select");
+    if (langSelect) {
+      langSelect.addEventListener("change", (event) => {
+        const lang = event.target.value;
+        localStorage.setItem("site_lang", lang);
+        currentLang = lang;
+        translatePage(lang);
+      });
+    }
+
+    const savedLang =
+      localStorage.getItem("site_lang") ||
+      (globalThis.navigator.language?.startsWith("en") ? "en" : "vi");
+
+    if (langSelect) {
+      langSelect.value = savedLang;
+    }
+
+    currentLang = savedLang;
+    translatePage(savedLang);
+  }
+
+  function initHeader() {
+    const header = document.querySelector(".site-header");
+    const toggle = document.querySelector(".nav-toggle");
+    const nav = document.querySelector(".nav-menu");
+
+    if (header) {
+      const updateHeaderState = () =>
+        header.classList.toggle("scrolled", globalThis.scrollY > 12);
+      updateHeaderState();
+      window.addEventListener("scroll", updateHeaderState, { passive: true });
+    }
+
+    if (!toggle || !nav) {
+      return;
+    }
+
+    const closeMenu = () => {
+      nav.classList.remove("is-open");
+      toggle.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("menu-open");
+    };
+
+    toggle.addEventListener("click", () => {
+      const isOpen = nav.classList.toggle("is-open");
+      toggle.classList.toggle("is-open", isOpen);
+      toggle.setAttribute("aria-expanded", String(isOpen));
+      document.body.classList.toggle("menu-open", isOpen);
+    });
+
+    nav
+      .querySelectorAll("a")
+      .forEach((link) => link.addEventListener("click", closeMenu));
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
     });
   }
 
-  // initialize language from localStorage or browser
-  const savedLang =
-    localStorage.getItem("site_lang") ||
-    (navigator.language && navigator.language.startsWith("en") ? "en" : "vi");
-  // set selector value if present
-  if (langSelect) langSelect.value = savedLang;
-  translatePage(savedLang);
-  /* 1. Hiệu ứng cuộn trang Fade-in */
-  const animatedElements = document.querySelectorAll(".animate");
-  if ("IntersectionObserver" in window) {
+  function initRevealEffects() {
+    const animatedElements = document.querySelectorAll(".animate");
+
+    if (!animatedElements.length) {
+      return;
+    }
+
+    if (prefersReducedMotion || !("IntersectionObserver" in globalThis)) {
+      animatedElements.forEach((element) => element.classList.add("visible"));
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries, obs) => {
         entries.forEach((entry) => {
@@ -217,83 +296,134 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
       },
-      { threshold: 0.1 },
+      { threshold: 0.12, rootMargin: "0px 0px -10% 0px" },
     );
-    animatedElements.forEach((el) => observer.observe(el));
+
+    animatedElements.forEach((element) => observer.observe(element));
   }
 
-  /* 2. Hàm hiển thị Toast */
-  function showCyberToast(message) {
-    let container = document.getElementById("toast-container");
-    if (!container) {
-      container = document.createElement("div");
-      container.id = "toast-container";
-      document.body.appendChild(container);
+  function initCounters() {
+    const counters = document.querySelectorAll(".counter");
+    if (!counters.length) {
+      return;
     }
-    const toast = document.createElement("div");
-    toast.className = "cyber-toast";
-    toast.innerHTML = `<span>⚡ ${message}</span>`;
-    container.appendChild(toast);
-    setTimeout(() => {
-      toast.style.opacity = "0";
-      toast.style.transform = "translateY(10px)";
-      setTimeout(() => toast.remove(), 300);
-    }, 4000);
+
+    if (prefersReducedMotion || !("IntersectionObserver" in globalThis)) {
+      counters.forEach((counter) => animateCounter(counter));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.4 },
+    );
+
+    counters.forEach((counter) => observer.observe(counter));
   }
 
-  /* 2a. Thông báo khi mở trang */
-  function showLandingNotice() {
-    Swal.fire({
-      title:
-        (translations[savedLang] && translations[savedLang]["notice.title"]) ||
-        translations.vi["notice.title"],
-      icon: "info",
-      html:
-        (translations[savedLang] && translations[savedLang]["notice.html"]) ||
-        translations.vi["notice.html"],
-      confirmButtonText:
-        (translations[savedLang] &&
-          translations[savedLang]["notice.confirm"]) ||
-        translations.vi["notice.confirm"],
-      timer: 10000,
-      timerProgressBar: true,
-      allowOutsideClick: true,
-      showCloseButton: true,
+  function createModal({ title, html, confirmText, cancelText, onConfirm }) {
+    const backdrop = document.createElement("div");
+    backdrop.className = "modal-backdrop";
+    backdrop.innerHTML = `
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-header">
+          <h3 id="modal-title">${title}</h3>
+          <button class="modal-close" type="button" aria-label="Đóng">×</button>
+        </div>
+        <div class="modal-body">${html}</div>
+        <div class="modal-actions">
+          ${cancelText ? '<button class="btn btn-secondary modal-cancel" type="button">' + cancelText + "</button>" : ""}
+          <button class="btn btn-primary modal-confirm" type="button">${confirmText}</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(backdrop);
+    document.body.classList.add("modal-open");
+
+    const closeModal = () => {
+      backdrop.remove();
+      document.body.classList.remove("modal-open");
+    };
+
+    backdrop
+      .querySelector(".modal-close")
+      ?.addEventListener("click", closeModal);
+    backdrop.addEventListener("click", (event) => {
+      if (event.target === backdrop) {
+        closeModal();
+      }
+    });
+
+    backdrop
+      .querySelector(".modal-cancel")
+      ?.addEventListener("click", closeModal);
+    backdrop.querySelector(".modal-confirm")?.addEventListener("click", () => {
+      closeModal();
+      onConfirm?.();
+    });
+
+    document.addEventListener("keydown", function handleEscape(event) {
+      if (event.key === "Escape") {
+        closeModal();
+        document.removeEventListener("keydown", handleEscape);
+      }
     });
   }
 
-  showLandingNotice();
+  function showLandingNotice() {
+    createModal({
+      title:
+        translations[currentLang]?.["notice.title"] ||
+        translations.vi["notice.title"],
+      html:
+        translations[currentLang]?.["notice.html"] ||
+        translations.vi["notice.html"],
+      confirmText:
+        translations[currentLang]?.["notice.confirm"] ||
+        translations.vi["notice.confirm"],
+      cancelText: "",
+      onConfirm: () => {},
+    });
+  }
 
-  /* 3. Nếu trang vẫn còn form đặt hàng, chuyển hướng người dùng sang Zalo */
   const form = document.getElementById("orderForm");
-
   if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      Swal.fire({
-        icon: "info",
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      createModal({
         title:
-          (translations[savedLang] &&
-            translations[savedLang]["form.modal.title"]) ||
+          translations[currentLang]?.["form.modal.title"] ||
           translations.vi["form.modal.title"],
         html:
-          (translations[savedLang] &&
-            translations[savedLang]["form.modal.html"]) ||
+          translations[currentLang]?.["form.modal.html"] ||
           translations.vi["form.modal.html"],
-        confirmButtonText:
-          (translations[savedLang] &&
-            translations[savedLang]["form.modal.open"]) ||
+        confirmText:
+          translations[currentLang]?.["form.modal.open"] ||
           translations.vi["form.modal.open"],
-        showCancelButton: true,
-        cancelButtonText:
-          (translations[savedLang] &&
-            translations[savedLang]["form.modal.cancel"]) ||
+        cancelText:
+          translations[currentLang]?.["form.modal.cancel"] ||
           translations.vi["form.modal.cancel"],
-      }).then((result) => {
-        if (result.isConfirmed) {
-          window.open("https://zalo.me/0389307257", "_blank");
-        }
+        onConfirm: () =>
+          window.open(
+            "https://zalo.me/0389307257",
+            "_blank",
+            "noopener,noreferrer",
+          ),
       });
     });
   }
+
+  initLanguageSwitcher();
+  initHeader();
+  initRevealEffects();
+  initCounters();
+  showLandingNotice();
 });

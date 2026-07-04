@@ -8,6 +8,7 @@
       name="description"
       content="NarutoGold - Dịch vụ cày vàng và boosting game an toàn, nhanh chóng, hỗ trợ 24/7."
     />
+    <meta name="theme-color" content="#03050c" />
     <link rel="icon" type="image/svg+xml" href="naruto.webp" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,7 +17,6 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
       rel="stylesheet"
     />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <body>
     <div class="ambient-grid"></div>
@@ -35,8 +35,8 @@
           </svg>
           NHDINH<span>GOLD</span>
         </a>
-        <nav>
-          <a href="#" data-i18n="nav.services">DỊCH VỤ</a>
+        <nav id="site-nav" class="nav-menu">
+          <a href="#services" data-i18n="nav.services">DỊCH VỤ</a>
           <a href="#process" data-i18n="nav.process">QUY TRÌNH</a>
           <a href="#pricing" data-i18n="nav.pricing">BẢNG GIÁ</a>
           <a href="#contact" data-i18n="nav.contact">LIÊN HỆ</a>
@@ -53,6 +53,18 @@
           </div>
         </div>
       </div>
+      <!-- Move nav toggle outside the main container to the header edge -->
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Mở menu"
+        aria-expanded="false"
+        aria-controls="site-nav"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </header>
 
     <main>
@@ -140,8 +152,8 @@
 
               <div class="stats">
                 <div>
-                  <strong class="counter" data-target="99">9</strong
-                  ><strong>8%</strong>
+                  <strong class="counter" data-target="99"></strong
+                  ><strong>%</strong>
                   <span data-i18n="stats.completed">Hoàn thành</span>
                 </div>
                 <div>
@@ -159,11 +171,75 @@
         </div>
       </section>
 
+      <section id="services" class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Quy trình rõ ràng và bảo mật tối ưu.</h2>
+          </div>
+          <div class="feature-grid">
+            <article class="feature-card animate">
+              <div class="icon-wrapper primary">
+                <svg
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M12 3l7 4v5c0 4.2-2.7 7.8-7 9-4.3-1.2-7-4.8-7-9V7l7-4z"
+                  ></path>
+                </svg>
+              </div>
+              <h3>An toàn tuyệt đối</h3>
+              <p>
+                Luồng xử lý riêng biệt, bảo mật tài khoản và minh bạch từng
+                bước.
+              </p>
+            </article>
+            <article class="feature-card animate">
+              <div class="icon-wrapper primary">
+                <svg
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-width="2"
+                >
+                  <path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"></path>
+                </svg>
+              </div>
+              <h3>Tốc độ tối ưu</h3>
+              <p>
+                Nhanh chóng, đúng tiến độ cam kết và luôn có người hỗ trợ kịp
+                thời.
+              </p>
+            </article>
+            <article class="feature-card animate">
+              <div class="icon-wrapper primary">
+                <svg
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-width="2"
+                >
+                  <path d="M5 12h14"></path>
+                  <path d="M12 5v14"></path>
+                </svg>
+              </div>
+              <h3>Gói dịch vụ đa dạng</h3>
+              <p>
+                Bao gồm các mức cơ bản, khuyên dùng và nâng cao để phù hợp nhu
+                cầu.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section id="process" class="section process-section">
         <div class="container">
           <div class="section-header">
             <h2 class="section-highlight" data-i18n="process.title">
-              Quy trình 3 bước khép kín
+              Quy trình 3 bước khép kín.
             </h2>
           </div>
           <div class="process-grid">
@@ -278,7 +354,7 @@
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
                   <span data-i18n="pricing.recommended.feature3"
-                    >Bảo hiểm tài khoản 100%</span
+                    >Bảo hiểm tài khoản 99%</span
                   >
                 </li>
                 <li>
@@ -359,7 +435,6 @@
               >
             </article>
           </div>
-    
         </div>
       </section>
 
@@ -367,24 +442,30 @@
         <div class="container trust-grid">
           <div class="trust-item">
             <strong class="counter-val"
-              ><span class="counter" data-target="1250">999</span>+</strong
+              ><span class="counter" data-target="1250" data-suffix="+"
+                >999</span
+              ></strong
             >
             <p data-i18n="trust.delivered">Tài khoản đã bàn giao</p>
           </div>
           <div class="trust-item">
             <strong class="counter-val"
-              ><span class="counter" data-target="100">98</span>%</strong
+              ><span class="counter" data-target="100" data-suffix="%"
+                >98</span
+              ></strong
             >
             <p data-i18n="trust.safety">Tỷ lệ an toàn tuyệt đối</p>
           </div>
           <div class="trust-item">
             <strong class="counter-val"
-              ><span class="counter" data-target="4">10</span>h</strong
+              ><span class="counter" data-target="24" data-suffix="h"
+                >24</span
+              ></strong
             >
             <p data-i18n="trust.avg_time">Thời gian xử lý trung bình</p>
           </div>
           <div class="trust-item">
-            <strong class="counter-val accent">0 Risk</strong>
+            <strong class="counter-val accent">0 </strong>
             <p data-i18n="trust.compensation">Đền bù 200% nếu vi phạm</p>
           </div>
         </div>
@@ -395,7 +476,6 @@
           <div class="contact-grid">
             <div class="contact-info-card">
               <div class="contact-text">
-                <span data-i18n="contact.support_label">Direct Support</span>
                 <h2 data-i18n="contact.title">Kênh điều phối dịch vụ</h2>
                 <p data-i18n="contact.desc">
                   Bạn gặp khó khăn trong việc định hình gói? Kết nối trực tiếp
@@ -457,8 +537,6 @@
                     NGUYEN HOANG DINH<br />1907 4486 6710 11
                   </p>
                 </div>
-
-                
 
                 <a
                   class="btn btn-primary submit-btn"
