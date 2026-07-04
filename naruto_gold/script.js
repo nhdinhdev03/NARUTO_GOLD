@@ -38,9 +38,9 @@ document.addEventListener("DOMContentLoaded", () => {
   /* 2a. Thông báo khi mở trang */
   function showLandingNotice() {
     Swal.fire({
-      title: "Thông báo ưu tiên",
+      title: "Thông báo quan trọng",
       icon: "info",
-      html: `Ưu tiên khách hàng có phôi giao dịch ám <strong>450</strong>, Nếu có <strong>10</strong> hoặc nhiều hơn thì liên hệ ngay!`,
+      html: `Ưu tiên khách hàng có phôi giao dịch <strong>450</strong>, Nếu có <strong>10</strong> hoặc nhiều hơn thì liên hệ ngay!<br><span style="color:#ff4d6d; font-weight:700;">Kèm phí chuyển vàng phôi + Mua lại phôi.</span>`,
       confirmButtonText: "Đã hiểu",
       timer: 10000,
       timerProgressBar: true,
