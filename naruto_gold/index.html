@@ -46,8 +46,59 @@
             >ĐẶT ĐƠN NGAY</a
           >
           <div class="language-select">
-            <select id="lang-select" aria-label="Chọn ngôn ngữ">
-              <option value="vi">Tiếng Việt</option>
+            <button
+              class="lang-toggle"
+              type="button"
+              id="lang-toggle"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+              aria-controls="lang-menu"
+            >
+              <img
+                class="lang-flag"
+                src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg"
+                alt="Vietnam flag"
+              />
+              <span class="lang-label">VI</span>
+              <span class="lang-caret">▾</span>
+            </button>
+            <div
+              class="lang-menu"
+              id="lang-menu"
+              role="listbox"
+              aria-label="Chọn ngôn ngữ"
+            >
+              <button
+                class="lang-option is-active"
+                type="button"
+                data-lang="vi"
+                role="option"
+                aria-selected="true"
+              >
+                <img
+                  class="lang-flag"
+                  src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg"
+                  alt="Vietnam flag"
+                />
+                <span>Tiếng Việt</span>
+              </button>
+              <button
+                class="lang-option"
+                type="button"
+                data-lang="en"
+                role="option"
+                aria-selected="false"
+              >
+                <img
+                  class="lang-flag"
+                  src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg"
+                  alt="United States flag"
+                />
+                <span>English</span>
+              </button>
+            </div>
+            <select id="lang-select" aria-label="Chọn ngôn ngữ" hidden>
+              <option value="vi" selected>Tiếng Việt</option>
               <option value="en">English</option>
             </select>
           </div>

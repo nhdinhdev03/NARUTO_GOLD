@@ -214,25 +214,83 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function initLanguageSwitcher() {
     const langSelect = document.getElementById("lang-select");
+    const langToggle = document.getElementById("lang-toggle");
+    const langMenu = document.getElementById("lang-menu");
+    const langOptions = document.querySelectorAll(".lang-option");
+
+    const updateLanguageUI = (lang) => {
+      if (langToggle) {
+        const flag = langToggle.querySelector(".lang-flag");
+        const label = langToggle.querySelector(".lang-label");
+        if (flag) {
+          flag.src =
+            lang === "en"
+              ? "https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg"
+              : "https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg";
+        }
+        if (label) {
+          label.textContent = lang === "en" ? "EN" : "VI";
+        }
+      }
+
+      langOptions.forEach((option) => {
+        const active = option.dataset.lang === lang;
+        option.classList.toggle("is-active", active);
+        option.setAttribute("aria-selected", String(active));
+      });
+
+      if (langSelect) {
+        langSelect.value = lang;
+      }
+    };
+
+    const applyLanguage = (lang) => {
+      if (!translations[lang]) {
+        return;
+      }
+      localStorage.setItem("site_lang", lang);
+      currentLang = lang;
+      translatePage(lang);
+      updateLanguageUI(lang);
+      if (langMenu) {
+        langMenu.classList.remove("is-open");
+      }
+      if (langToggle) {
+        langToggle.setAttribute("aria-expanded", "false");
+      }
+    };
+
     if (langSelect) {
       langSelect.addEventListener("change", (event) => {
-        const lang = event.target.value;
-        localStorage.setItem("site_lang", lang);
-        currentLang = lang;
-        translatePage(lang);
+        applyLanguage(event.target.value);
       });
     }
+
+    if (langToggle && langMenu) {
+      langToggle.addEventListener("click", () => {
+        const isOpen = langMenu.classList.toggle("is-open");
+        langToggle.setAttribute("aria-expanded", String(isOpen));
+      });
+    }
+
+    langOptions.forEach((option) => {
+      option.addEventListener("click", () => {
+        applyLanguage(option.dataset.lang);
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!event.target.closest(".language-select")) {
+        langMenu?.classList.remove("is-open");
+        langToggle?.setAttribute("aria-expanded", "false");
+      }
+    });
 
     const savedLang =
       localStorage.getItem("site_lang") ||
       (globalThis.navigator.language?.startsWith("en") ? "en" : "vi");
 
-    if (langSelect) {
-      langSelect.value = savedLang;
-    }
-
-    currentLang = savedLang;
-    translatePage(savedLang);
+    applyLanguage(savedLang);
   }
 
   function initHeader() {

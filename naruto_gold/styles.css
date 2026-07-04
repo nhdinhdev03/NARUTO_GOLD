@@ -80,7 +80,7 @@ body {
 .header-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 1rem;
   height: 76px;
 }
 
@@ -94,6 +94,7 @@ body {
   align-items: center;
   gap: 0.5rem;
   letter-spacing: -0.02em;
+  flex: 0 0 auto;
 }
 .logo span {
   color: var(--primary);
@@ -107,6 +108,12 @@ body {
 nav {
   display: flex;
   gap: 2.2rem;
+}
+.nav-menu {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
 }
 nav a {
   color: var(--text-muted);
@@ -144,49 +151,102 @@ nav a:hover {
   gap: 0.75rem;
   margin-left: auto;
 }
+/* ensure actions don't shrink when nav grows */
+.header-actions {
+  flex: 0 0 auto;
+}
 .language-select {
   position: relative;
   display: inline-block;
 }
-.language-select select#lang-select {
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: rgba(255, 255, 255, 0.02);
+.lang-toggle,
+.lang-option {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: rgba(255, 255, 255, 0.03);
   color: var(--text);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 0.38rem 1.8rem 0.38rem 0.6rem;
-  border-radius: 10px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  min-width: 120px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  padding: 0.42rem 0.7rem;
   cursor: pointer;
   transition:
     transform 160ms ease,
     box-shadow 160ms ease,
-    border-color 160ms ease;
+    border-color 160ms ease,
+    background 160ms ease;
 }
-.language-select select#lang-select:hover {
+.lang-toggle:hover,
+.lang-option:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  border-color: rgba(255, 106, 0, 0.35);
 }
-.language-select select#lang-select:focus {
+.lang-toggle:focus-visible,
+.lang-option:focus-visible {
   outline: none;
   box-shadow: 0 0 0 6px rgba(255, 107, 0, 0.08);
   border-color: var(--primary);
 }
-.language-select select#lang-select option {
-  background: var(--surface);
-  color: var(--text);
+.lang-flag {
+  width: 20px;
+  height: 14px;
+  display: block;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12);
 }
-
-/* removed leftover SVG caret rules */
+.lang-label,
+.lang-option span {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.lang-caret {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.lang-menu {
+  position: absolute;
+  top: calc(100% + 0.45rem);
+  right: 0;
+  display: none;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.45rem;
+  min-width: 150px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: rgba(3, 5, 12, 0.96);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  z-index: 20;
+}
+.lang-menu.is-open {
+  display: flex;
+}
+.lang-option {
+  justify-content: flex-start;
+  width: 100%;
+  border-radius: 10px;
+  padding: 0.55rem 0.7rem;
+}
+.lang-option.is-active {
+  background: rgba(255, 106, 0, 0.12);
+  border-color: rgba(255, 106, 0, 0.24);
+}
+.language-select #lang-select {
+  display: none;
+}
 
 /* small responsive tweak: show compact labels on narrow screens */
 @media (max-width: 520px) {
-  .language-select select#lang-select {
-    min-width: 88px;
-    font-size: 0.85rem;
-    padding-right: 1.2rem;
+  .lang-toggle {
+    padding: 0.38rem 0.6rem;
+  }
+  .lang-label {
+    font-size: 0.82rem;
+  }
+  .lang-menu {
+    min-width: 140px;
   }
 }
 
