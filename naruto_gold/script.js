@@ -71,6 +71,10 @@ document.addEventListener("DOMContentLoaded", () => {
       "contact.form_title": "Đặt hàng qua Zalo",
       "contact.form_desc":
         "Vui lòng liên hệ trực tiếp qua Zalo để đặt đơn, gửi thông tin tài khoản và nhận phản hồi nhanh.",
+      "contact.response":
+        "<strong>Thời gian phản hồi:</strong> 24/7, nhanh trong 35 phút",
+      "contact.note":
+        "<strong>Ghi chú:</strong> Gửi kèm Server, mục tiêu, nội dung yêu cầu và thông tin tài khoản game.",
       "contact.open_zalo": "MỞ ZALO ĐẶT NGAY",
       "footer.copy": "© 2026 NarutoGold Agency.",
       "footer.privacy": "Chính sách bảo mật",
@@ -153,6 +157,10 @@ document.addEventListener("DOMContentLoaded", () => {
       "contact.form_title": "Order via Zalo",
       "contact.form_desc":
         "Please contact via Zalo to place orders, send account info and receive fast replies.",
+      "contact.response":
+        "<strong>Response time:</strong> 24/7, within 35 minutes",
+      "contact.note":
+        "<strong>Note:</strong> Include Server, target, request details and game account info.",
       "contact.open_zalo": "OPEN ZALO",
       "footer.copy": "© 2026 NarutoGold Agency.",
       "footer.privacy": "Privacy Policy",

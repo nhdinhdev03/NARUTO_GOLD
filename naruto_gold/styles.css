@@ -143,19 +143,52 @@ nav a:hover {
   align-items: center;
   gap: 0.75rem;
 }
-.header-actions select#lang-select {
-
-  color: #000000;
+.language-select {
+  position: relative;
+  display: inline-block;
+}
+.language-select select#lang-select {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: rgba(255, 255, 255, 0.02);
+  color: var(--text);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 0.38rem 0.6rem;
-  border-radius: 8px;
+  padding: 0.38rem 1.8rem 0.38rem 0.6rem;
+  border-radius: 10px;
   font-weight: 600;
   font-size: 0.9rem;
+  min-width: 120px;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    border-color 160ms ease;
 }
-.header-actions select#lang-select:focus {
+.language-select select#lang-select:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+}
+.language-select select#lang-select:focus {
   outline: none;
   box-shadow: 0 0 0 6px rgba(255, 107, 0, 0.08);
   border-color: var(--primary);
+}
+.language-select select#lang-select option {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.language-select svg {
+  display: none;
+}
+
+/* small responsive tweak: show compact labels on narrow screens */
+@media (max-width: 520px) {
+  .header-actions select#lang-select {
+    min-width: 88px;
+    font-size: 0.85rem;
+    padding-right: 1.2rem;
+  }
 }
 
 /* HERO SECTION */
