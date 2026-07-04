@@ -67,10 +67,10 @@ document.addEventListener("DOMContentLoaded", () => {
       "contact.support_label": "Direct Support",
       "contact.title": "Kênh điều phối dịch vụ",
       "contact.desc":
-        "Bạn gặp khó khăn trong việc định hình gói? Kết nối trực tiếp với tổng đài viên để được thẩm định acc miễn phí.",
-      "contact.form_title": "Đặt hàng qua Zalo",
+        "Bạn gặp khó khăn trong việc định hình gói? Kết nối trực tiếp với tổng đài viên để được tư vấn phù hợp và thẩm định acc miễn phí.",
+      "contact.form_title": "Liên hệ trực tiếp",
       "contact.form_desc":
-        "Vui lòng liên hệ trực tiếp qua Zalo để đặt đơn, gửi thông tin tài khoản và nhận phản hồi nhanh.",
+        "Gửi thông tin tài khoản, nêu mục tiêu và nhận phản hồi nhanh trong vòng 35 phút.",
       "contact.response":
         "<strong>Thời gian phản hồi:</strong> 24/7, nhanh trong 35 phút",
       "contact.note":
@@ -154,9 +154,9 @@ document.addEventListener("DOMContentLoaded", () => {
       "contact.title": "Service coordination",
       "contact.desc":
         "Need help choosing a package? Connect directly with an agent for a free account assessment.",
-      "contact.form_title": "Order via Zalo",
+      "contact.form_title": "Direct contact",
       "contact.form_desc":
-        "Please contact via Zalo to place orders, send account info and receive fast replies.",
+        "Send your account details, state your goal, and receive a fast reply within 35 minutes.",
       "contact.response":
         "<strong>Response time:</strong> 24/7, within 35 minutes",
       "contact.note":

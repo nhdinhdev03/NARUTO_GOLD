@@ -739,15 +739,59 @@ nav a:hover {
   position: relative;
   z-index: 1;
 }
+.contact-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(255, 106, 0, 0.12);
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
 .contact-text h2 {
   font-family: "Space Grotesk", sans-serif;
   font-size: 2.2rem;
-  margin: 0.5rem 0 1rem;
+  margin: 0 0 1rem;
 }
 .contact-text p {
   color: var(--text-muted);
-  margin-bottom: 1.6rem;
+  margin-bottom: 1.25rem;
   max-width: 56ch;
+}
+.support-badges {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1rem 0 1.4rem;
+}
+.support-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.8rem 0.95rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.support-badge span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 31px;
+  height: 31px;
+  border-radius: 999px;
+  background: rgba(255, 106, 0, 0.16);
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.support-badge strong {
+  font-size: 0.95rem;
 }
 .contact-cards {
   display: grid;
@@ -796,6 +840,10 @@ nav a:hover {
   font-family: "Space Grotesk", sans-serif;
   font-size: 1.05rem;
 }
+.c-card a {
+  color: var(--text);
+  text-decoration: none;
+}
 .qr-block {
   margin-top: 1.8rem;
   padding: 1.3rem;
@@ -804,7 +852,8 @@ nav a:hover {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 .qr-label,
-.qr-account {
+.qr-account,
+.qr-note {
   color: var(--text-muted);
   font-size: 0.9rem;
   text-align: center;
@@ -815,6 +864,10 @@ nav a:hover {
   font-weight: 700;
   line-height: 1.4;
 }
+.qr-note {
+  margin-bottom: 0;
+  font-size: 0.82rem;
+}
 .qr-block img {
   display: block;
   width: min(220px, 100%);
@@ -822,31 +875,23 @@ nav a:hover {
   border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
-.contact-form-card {
-  padding: 2.2rem;
+.contact-summary {
+  margin-top: 1.8rem;
+  display: grid;
+  gap: 0.95rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
-.contact-form {
-  position: relative;
-  z-index: 1;
-}
-.form-title {
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-}
-.input-group {
-  margin-bottom: 1.15rem;
-}
-.input-group label {
-  display: block;
-  font-size: 0.85rem;
+.contact-summary p {
+  margin: 0;
   color: var(--text-muted);
-  margin-bottom: 0.5rem;
+  line-height: 1.6;
 }
-.input-group input,
-.input-group textarea {
-  width: 100%;
+.contact-summary strong {
+  color: var(--text);
+}
+
+/* Legacy form styles removed after merging contact blocks */
   background: rgba(3, 5, 12, 0.72);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
@@ -869,7 +914,7 @@ nav a:hover {
 }
 .submit-btn {
   width: 100%;
-  margin-top: 0.8rem;
+  margin-top: auto;
 }
 
 /* FOOTER */
