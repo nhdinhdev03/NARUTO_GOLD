@@ -2,10 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- i18n translations for English and Vietnamese ---
   const translations = {
     vi: {
-      "nav.services": "Dịch vụ",
-      "nav.process": "Quy trình",
-      "nav.pricing": "Bảng giá",
-      "nav.contact": "Liên hệ",
+      "nav.services": "DỊCH VỤ",
+      "nav.process": "QUY TRÌNH",
+      "nav.pricing": "BẢNG GIÁ",
+      "nav.contact": "LIÊN HỆ",
       "cta.order": "ĐẶT ĐƠN NGAY",
       "cta.contact": "Liên hệ Zalo",
       "cta.view_pricing": "Xem bảng giá",
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "<strong>Ghi chú:</strong> Gửi kèm Server, mục tiêu, nội dung yêu cầu và thông tin tài khoản game.",
       "contact.open_zalo": "MỞ ZALO ĐẶT NGAY",
       "footer.copy": "© 2026 NarutoGold Agency.",
-      "footer.privacy": "Chính sách bảo mật",
+      "footer.privacy": "CHINH SÁCH BẢO MẬT",
       "notice.title": "Thông báo quan trọng",
       "notice.html":
         'Ưu tiên khách hàng có phôi giao dịch <strong>450</strong>, Nếu có <strong>10</strong> hoặc nhiều hơn thì liên hệ ngay!<br><span style="color:#ff4d6d; font-weight:700;">Kèm phí chuyển vàng phôi + Mua lại phôi.</span>',
