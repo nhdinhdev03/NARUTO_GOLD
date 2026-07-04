@@ -315,8 +315,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function initHeader() {
     const header = document.querySelector(".site-header");
-    const toggle = document.querySelector(".nav-toggle");
-    const nav = document.querySelector(".nav-menu");
 
     if (header) {
       const updateHeaderState = () =>
@@ -324,33 +322,6 @@ document.addEventListener("DOMContentLoaded", () => {
       updateHeaderState();
       window.addEventListener("scroll", updateHeaderState, { passive: true });
     }
-
-    if (!toggle || !nav) {
-      return;
-    }
-
-    const closeMenu = () => {
-      nav.classList.remove("is-open");
-      toggle.classList.remove("is-open");
-      toggle.setAttribute("aria-expanded", "false");
-      document.body.classList.remove("menu-open");
-    };
-
-    toggle.addEventListener("click", () => {
-      const isOpen = nav.classList.toggle("is-open");
-      toggle.classList.toggle("is-open", isOpen);
-      toggle.setAttribute("aria-expanded", String(isOpen));
-      document.body.classList.toggle("menu-open", isOpen);
-    });
-
-    nav
-      .querySelectorAll("a")
-      .forEach((link) => link.addEventListener("click", closeMenu));
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        closeMenu();
-      }
-    });
   }
 
   function initRevealEffects() {

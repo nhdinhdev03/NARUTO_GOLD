@@ -872,49 +872,7 @@ nav a:hover {
 
 /* NAV TOGGLE: positioned at the header edge and responsive */
 .site-header {
-  position: relative; /* ensure absolute children align to header */
-}
-.site-header .nav-toggle {
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 120;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  border: none;
-  padding: 0.4rem;
-  cursor: pointer;
-}
-.site-header .nav-toggle span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: var(--text);
-  margin: 3px 0;
-  border-radius: 2px;
-  transition:
-    transform 200ms ease,
-    opacity 200ms ease;
-}
-
-/* Hide the toggle on wide screens (desktop) */
-@media (min-width: 880px) {
-  .site-header .nav-toggle {
-    display: none;
-  }
-}
-
-/* Small tweak: reduce overlap with language selector on narrow screens */
-@media (max-width: 520px) {
-  .site-header .nav-toggle {
-    right: 0.6rem;
-  }
-  .language-select select#lang-select {
-    min-width: 84px;
-  }
+  position: relative;
 }
 .contact-cards {
   display: grid;
@@ -1126,35 +1084,6 @@ body::after {
 
 .nav-toggle {
   display: none;
-  flex-direction: column;
-  gap: 0.28rem;
-  background: transparent;
-  border: 0;
-  padding: 0.35rem;
-  cursor: pointer;
-}
-
-.nav-toggle span {
-  display: block;
-  width: 1.2rem;
-  height: 2px;
-  background: var(--text);
-  border-radius: 999px;
-  transition:
-    transform 0.2s ease,
-    opacity 0.2s ease;
-}
-
-.nav-toggle.is-open span:nth-child(1) {
-  transform: translateY(6px) rotate(45deg);
-}
-
-.nav-toggle.is-open span:nth-child(2) {
-  opacity: 0;
-}
-
-.nav-toggle.is-open span:nth-child(3) {
-  transform: translateY(-6px) rotate(-45deg);
 }
 
 .nav-menu {
@@ -1251,7 +1180,6 @@ body.menu-open {
 }
 
 .btn:focus-visible,
-.nav-toggle:focus-visible,
 .modal-close:focus-visible {
   outline: 2px solid rgba(255, 106, 0, 0.6);
   outline-offset: 3px;
@@ -1265,7 +1193,6 @@ body.menu-open {
   .header-inner {
     height: auto;
     min-height: 68px;
-    padding: 0.9rem 2.8rem 0.9rem 0;
     gap: 0.7rem;
     flex-wrap: wrap;
   }
@@ -1279,31 +1206,13 @@ body.menu-open {
     margin-left: auto;
   }
 
+  /* hide primary nav on small screens (mobile) */
   .nav-toggle {
-    display: inline-flex;
-    position: absolute;
-    top: 50%;
-    right: 0.2rem;
-    transform: translateY(-50%);
-    margin-left: 0;
-  }
-
-  .nav-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.8rem;
-    padding: 1rem 1.25rem 1.2rem;
-    background: rgba(3, 5, 12, 0.98);
-    border-bottom: 1px solid var(--border);
     display: none;
   }
 
-  .nav-menu.is-open {
-    display: flex;
+  .nav-menu {
+    display: none !important;
   }
 
   .hero {
