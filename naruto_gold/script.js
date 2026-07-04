@@ -85,6 +85,16 @@ document.addEventListener("DOMContentLoaded", () => {
         "Thời gian phản hồi: 24/7, nhanh trong 35 phút",
       "pricing.note":
         "Ghi chú: Gửi kèm Server, mục tiêu, nội dung yêu cầu và thông tin tài khoản game.",
+      "services.title": "Quy trình rõ ràng và bảo mật tối ưu.",
+      "services.feature1.title": "An toàn tuyệt đối",
+      "services.feature1.desc":
+        "Luồng xử lý riêng biệt, bảo mật tài khoản và minh bạch từng bước.",
+      "services.feature2.title": "Tốc độ tối ưu",
+      "services.feature2.desc":
+        "Nhanh chóng, đúng tiến độ cam kết và luôn có người hỗ trợ kịp thời.",
+      "services.feature3.title": "Gói dịch vụ đa dạng",
+      "services.feature3.desc":
+        "Bao gồm các mức cơ bản, khuyên dùng và nâng cao để phù hợp nhu cầu.",
       "contact.support_label": "Direct Support",
       "contact.title": "Liên hệ",
       "contact.desc":
@@ -171,6 +181,16 @@ document.addEventListener("DOMContentLoaded", () => {
       "pricing.advanced.response": "Response time: 24/7, within 35 minutes",
       "pricing.note":
         "Note: Include Server, target, request details, and game account info.",
+      "services.title": "Clear process and optimal security.",
+      "services.feature1.title": "Absolute safety",
+      "services.feature1.desc":
+        "Isolated processing flows, account security and step-by-step transparency.",
+      "services.feature2.title": "Optimized speed",
+      "services.feature2.desc":
+        "Fast, on-time delivery with timely human support.",
+      "services.feature3.title": "Diverse service packages",
+      "services.feature3.desc":
+        "Includes Basic, Recommended and Advanced tiers to match needs.",
       "contact.support_label": "Direct Support",
       "contact.title": "Service coordination",
       "contact.desc":
