@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "pricing.recommended.name": "Khuyên dùng",
       "pricing.recommended.ribbon": "KHUYÊN DÙNG",
       "pricing.recommended.select": "Chọn gói này",
-      "pricing.recommended.feature1": "Cam kết 1.260.000 Vàng",
+      "pricing.recommended.feature1": "Cam kết 1.200.000 Vàng",
       "pricing.recommended.feature2": "Tối thiểu khách phải có 10 phôi 450",
       "pricing.recommended.feature3": "Bảo hiểm tài khoản 100%",
       "pricing.recommended.feature4":
