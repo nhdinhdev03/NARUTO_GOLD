@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "pricing.advanced.name": "Nâng cao",
       "pricing.advanced.ribbon": "GOD TIER",
       "pricing.advanced.select": "Chọn gói này",
-      "pricing.advanced.feature1": "Cam kết 14.000.000 Vàng",
+      "pricing.advanced.feature1": "Cam kết 15.000.000 Vàng",
       "pricing.advanced.feature2": "Tối thiểu khách phải có 20 ám 450",
       "pricing.advanced.feature3": "Ưu đãi cao nhất",
       "pricing.advanced.feature4": "Hỗ trợ trực tiếp 1-1 bởi nhdinh",
