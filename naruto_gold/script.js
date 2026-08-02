@@ -85,8 +85,8 @@ document.addEventListener("DOMContentLoaded", () => {
       "pricing.recommended.name": "Khuyên dùng",
       "pricing.recommended.ribbon": "KHUYÊN DÙNG",
       "pricing.recommended.select": "Chọn gói này",
-      "pricing.recommended.feature1": "Cam kết 1.200.000 Vàng",
-      "pricing.recommended.feature2": "Tối thiểu khách phải có 10 phôi 450",
+      "pricing.recommended.feature1": "Cam kết 1.000.000 Vàng",
+      "pricing.recommended.feature2": "Tối thiểu khách phải có 5 - 10 phôi 450",
       "pricing.recommended.feature3": "Bảo hiểm tài khoản 100%",
       "pricing.recommended.feature4":
         "Luồng ưu tiên (Xong trong 10 - 15h sau khi đã chốt)",
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "pricing.duration.label": "GÓI THEO THỜI GIAN",
       "pricing.duration.title": "Gói cày vàng linh hoạt theo ngày",
       "pricing.duration.subtitle":
-        "   Ưu đãi rõ ràng và giá tốt hơn, Tối thiểu khách phải có 10 phôi 450.",
+        "   Ưu đãi rõ ràng và giá tốt hơn, Tối thiểu khách phải có 5 - 10 phôi 450.",
       "pricing.duration.daily_label": "Mỗi ngày",
       "pricing.duration.total_label": "Tổng vàng",
       "pricing.duration.original_label": "Giá gốc",
@@ -141,15 +141,6 @@ document.addEventListener("DOMContentLoaded", () => {
       "contact.open_zalo": "MỞ ZALO ĐẶT NGAY",
       "footer.copy": "© 2026 NarutoGold Agency.",
       "footer.privacy": "Chính sách bảo mật",
-      "notice.title": "Thông báo quan trọng",
-      "notice.html":
-        'Ưu tiên khách hàng có phôi giao dịch <strong>450</strong>, Nếu có <strong>10</strong> hoặc nhiều hơn thì liên hệ ngay!<br><span style="color:#ff4d6d; font-weight:700;">Kèm phí chuyển vàng phôi + Mua lại phôi.</span>',
-      "notice.confirm": "Đã hiểu",
-      "form.modal.title": "Đặt hàng qua Zalo",
-      "form.modal.html":
-        "Hiện tại hệ thống đơn online tạm dừng. Vui lòng nhấn vào nút để mở Zalo và gửi yêu cầu trực tiếp đến <strong>0389 307 257</strong>.",
-      "form.modal.open": "Mở Zalo",
-      "form.modal.cancel": "Đóng",
     },
     en: {
       "nav.services": "Services",
@@ -253,22 +244,12 @@ document.addEventListener("DOMContentLoaded", () => {
       "contact.open_zalo": "OPEN ZALO",
       "footer.copy": "© 2026 NarutoGold Agency.",
       "footer.privacy": "Privacy Policy",
-      "notice.title": "Important notice",
-      "notice.html":
-        'Priority for customers with voucher <strong>450</strong>. If you have <strong>10</strong> or more, contact us immediately!<br><span style="color:#ff4d6d; font-weight:700;">Includes voucher transfer fee + buyback.</span>',
-      "notice.confirm": "Understood",
-      "form.modal.title": "Order via Zalo",
-      "form.modal.html":
-        "Online ordering is temporarily suspended. Please click the button to open Zalo and send your request directly to <strong>0389 307 257</strong>.",
-      "form.modal.open": "Open Zalo",
-      "form.modal.cancel": "Close",
     },
   };
 
   const prefersReducedMotion = globalThis.matchMedia(
     "(prefers-reduced-motion: reduce)",
   ).matches;
-  let currentLang = "vi";
 
   function translatePage(lang) {
     document.documentElement.lang = lang;
@@ -317,7 +298,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
       localStorage.setItem("site_lang", lang);
-      currentLang = lang;
       translatePage(lang);
       updateLanguageUI(lang);
       if (langMenu) {
@@ -425,102 +405,8 @@ document.addEventListener("DOMContentLoaded", () => {
     counters.forEach((counter) => observer.observe(counter));
   }
 
-  function createModal({ title, html, confirmText, cancelText, onConfirm }) {
-    const backdrop = document.createElement("div");
-    backdrop.className = "modal-backdrop";
-    backdrop.innerHTML = `
-      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-        <div class="modal-header">
-          <h3 id="modal-title">${title}</h3>
-          <button class="modal-close" type="button" aria-label="Đóng">×</button>
-        </div>
-        <div class="modal-body">${html}</div>
-        <div class="modal-actions">
-          ${cancelText ? '<button class="btn btn-secondary modal-cancel" type="button">' + cancelText + "</button>" : ""}
-          <button class="btn btn-primary modal-confirm" type="button">${confirmText}</button>
-        </div>
-      </div>
-    `;
-
-    document.body.appendChild(backdrop);
-    document.body.classList.add("modal-open");
-
-    const closeModal = () => {
-      backdrop.remove();
-      document.body.classList.remove("modal-open");
-    };
-
-    backdrop
-      .querySelector(".modal-close")
-      ?.addEventListener("click", closeModal);
-    backdrop.addEventListener("click", (event) => {
-      if (event.target === backdrop) {
-        closeModal();
-      }
-    });
-
-    backdrop
-      .querySelector(".modal-cancel")
-      ?.addEventListener("click", closeModal);
-    backdrop.querySelector(".modal-confirm")?.addEventListener("click", () => {
-      closeModal();
-      onConfirm?.();
-    });
-
-    document.addEventListener("keydown", function handleEscape(event) {
-      if (event.key === "Escape") {
-        closeModal();
-        document.removeEventListener("keydown", handleEscape);
-      }
-    });
-  }
-
-  function showLandingNotice() {
-    createModal({
-      title:
-        translations[currentLang]?.["notice.title"] ||
-        translations.vi["notice.title"],
-      html:
-        translations[currentLang]?.["notice.html"] ||
-        translations.vi["notice.html"],
-      confirmText:
-        translations[currentLang]?.["notice.confirm"] ||
-        translations.vi["notice.confirm"],
-      cancelText: "",
-      onConfirm: () => {},
-    });
-  }
-
-  const form = document.getElementById("orderForm");
-  if (form) {
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      createModal({
-        title:
-          translations[currentLang]?.["form.modal.title"] ||
-          translations.vi["form.modal.title"],
-        html:
-          translations[currentLang]?.["form.modal.html"] ||
-          translations.vi["form.modal.html"],
-        confirmText:
-          translations[currentLang]?.["form.modal.open"] ||
-          translations.vi["form.modal.open"],
-        cancelText:
-          translations[currentLang]?.["form.modal.cancel"] ||
-          translations.vi["form.modal.cancel"],
-        onConfirm: () =>
-          window.open(
-            "https://zalo.me/0389307257",
-            "_blank",
-            "noopener,noreferrer",
-          ),
-      });
-    });
-  }
-
   initLanguageSwitcher();
   initHeader();
   initRevealEffects();
   initCounters();
-  showLandingNotice();
 });
