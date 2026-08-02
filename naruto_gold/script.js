@@ -405,8 +405,31 @@ document.addEventListener("DOMContentLoaded", () => {
     counters.forEach((counter) => observer.observe(counter));
   }
 
+  window.showOverloadAlert = () => {
+    const modal = document.getElementById("overload-modal");
+    if (modal) {
+      modal.classList.add("is-active");
+    }
+  };
+
+  window.closeOverloadAlert = () => {
+    const modal = document.getElementById("overload-modal");
+    if (modal) {
+      modal.classList.remove("is-active");
+    }
+  };
+
+  window.scrollToDurationPlans = () => {
+    window.closeOverloadAlert();
+    const durationSection = document.querySelector(".duration-section");
+    if (durationSection) {
+      durationSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   initLanguageSwitcher();
   initHeader();
   initRevealEffects();
   initCounters();
+  window.showOverloadAlert();
 });
