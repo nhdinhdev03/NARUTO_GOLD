@@ -405,6 +405,56 @@ document.addEventListener("DOMContentLoaded", () => {
     counters.forEach((counter) => observer.observe(counter));
   }
 
+  function initShowcaseModal() {
+    const modal = document.getElementById("showcase-modal");
+    const image = document.getElementById("showcase-modal-image");
+    const title = document.getElementById("showcase-modal-title");
+    const list = document.getElementById("showcase-modal-list");
+    const closeButton = document.querySelector(".showcase-modal-close");
+    const cards = document.querySelectorAll(".showcase-card");
+
+    if (!modal || !image || !title || !list || !closeButton) {
+      return;
+    }
+
+    const openModal = (card) => {
+      const img = card.querySelector("img");
+      const items = (card.dataset.items || "").split("|");
+
+      image.src = img?.src || "";
+      image.alt = img?.alt || "Hình ảnh minh họa";
+      title.textContent = card.dataset.title || "Chi tiết";
+      list.innerHTML = items
+        .filter(Boolean)
+        .map((item) => `<li>${item}</li>`)
+        .join("");
+      modal.classList.add("is-active");
+      modal.setAttribute("aria-hidden", "false");
+    };
+
+    const closeModal = () => {
+      modal.classList.remove("is-active");
+      modal.setAttribute("aria-hidden", "true");
+    };
+
+    cards.forEach((card) => {
+      card.addEventListener("click", () => openModal(card));
+    });
+
+    closeButton.addEventListener("click", closeModal);
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && modal.classList.contains("is-active")) {
+        closeModal();
+      }
+    });
+  }
+
   window.showOverloadAlert = () => {
     const modal = document.getElementById("overload-modal");
     if (modal) {
@@ -431,5 +481,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeader();
   initRevealEffects();
   initCounters();
+  initShowcaseModal();
   window.showOverloadAlert();
 });

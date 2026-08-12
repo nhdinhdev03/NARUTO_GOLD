@@ -824,6 +824,196 @@ nav a:hover {
   }
 }
 
+.showcase-marquee {
+  overflow: hidden;
+  position: relative;
+  border-radius: 24px;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+}
+.showcase-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 1.5rem;
+  padding: 0.4rem 0;
+  animation: showcaseSlide 28s ease-in-out infinite alternate;
+}
+.showcase-marquee:hover .showcase-marquee-track {
+  animation-play-state: paused;
+}
+.showcase-card {
+  flex: 0 0 360px;
+  background: rgba(15, 19, 34, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+}
+.showcase-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 106, 0, 0.35);
+}
+.showcase-card img {
+  display: block;
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+.showcase-body {
+  padding: 1.3rem 1.2rem 1.5rem;
+}
+.showcase-body h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1.1rem;
+  font-family: "Space Grotesk", sans-serif;
+}
+.showcase-body p {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-size: 0.92rem;
+}
+@keyframes showcaseSlide {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@media (max-width: 760px) {
+  .showcase-card {
+    flex-basis: 280px;
+  }
+}
+
+.showcase-modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: rgba(3, 5, 12, 0.82);
+  backdrop-filter: blur(8px);
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease;
+}
+.showcase-modal-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+.showcase-modal {
+  position: relative;
+  width: min(100%, 760px);
+  background: linear-gradient(
+    180deg,
+    rgba(13, 19, 34, 0.98),
+    rgba(8, 10, 18, 0.98)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.4);
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+}
+.showcase-modal-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  object-fit: cover;
+}
+.showcase-modal-content {
+  padding: 1.6rem 1.4rem 1.4rem;
+}
+.showcase-modal-tag {
+  display: inline-block;
+  margin-bottom: 0.65rem;
+  padding: 0.38rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255, 106, 0, 0.12);
+  color: var(--primary);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.showcase-modal-content h3 {
+  margin: 0 0 1rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.7rem;
+}
+.showcase-modal-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+.showcase-modal-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: #dfe7f5;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.showcase-modal-list li::before {
+  content: "•";
+  color: var(--primary);
+  font-size: 1.3rem;
+  line-height: 1;
+}
+.showcase-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  z-index: 2;
+}
+@media (max-width: 760px) {
+  .showcase-grid {
+    grid-template-columns: 1fr;
+  }
+  .showcase-modal {
+    grid-template-columns: 1fr;
+  }
+  .showcase-modal-media img {
+    min-height: 240px;
+  }
+}
+
 /* TRUST SECTION */
 .trust-grid {
   display: grid;
@@ -1381,7 +1571,6 @@ body.menu-open {
   }
 }
 
-
 /* Custom Modal Styles */
 .modal-overlay {
   position: fixed;
@@ -1397,7 +1586,9 @@ body.menu-open {
   z-index: 9999;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
 }
 
 .modal-overlay.is-active {
@@ -1433,7 +1624,7 @@ body.menu-open {
 
 .modal-header h3 {
   margin: 0;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 1.2rem;
   font-weight: 700;
 }
