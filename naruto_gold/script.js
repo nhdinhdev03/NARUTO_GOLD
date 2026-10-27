@@ -7,7 +7,7 @@ function animateCounter(element) {
   const suffix = element.dataset.suffix || "";
   const prefix = element.dataset.prefix || "";
   const decimals = Number(element.dataset.decimals || 0);
-  const duration = Number(element.dataset.duration || 1400);
+  const duration = Number(element.dataset.duration || 1500);
   const startTime = performance.now();
   const startValue = Number(element.dataset.start || 0);
 
@@ -39,10 +39,14 @@ function animateCounter(element) {
 document.addEventListener("DOMContentLoaded", () => {
   const translations = {
     vi: {
-      "nav.services": "Dịch vụ",
-      "nav.process": "Quy trình",
-      "nav.pricing": "Bảng giá",
-      "nav.contact": "Liên hệ",
+      "topbar.status": "SERVER STATUS: ONLINE • LUỒNG ƯU TIÊN ĐANG MỞ",
+      "topbar.requirement": "Quy định phôi: Tối thiểu 5 - 10 phôi 450",
+      "nav.services": "DỊCH VỤ",
+      "nav.process": "QUY TRÌNH",
+      "nav.pricing": "BẢNG GIÁ",
+      "nav.duration": "GÓI NGÀY",
+      "nav.showcase": "KẾT QUẢ",
+      "nav.contact": "LIÊN HỆ",
       "cta.order": "ĐẶT ĐƠN NGAY",
       "cta.contact": "Liên hệ Zalo",
       "cta.view_pricing": "Xem bảng giá",
@@ -63,6 +67,18 @@ document.addEventListener("DOMContentLoaded", () => {
       "trust.safety": "Tỷ lệ an toàn tuyệt đối",
       "trust.avg_time": "Thời gian xử lý trung bình",
       "trust.compensation": "Đền bù 200% nếu vi phạm",
+      "services.tag": "TIÊU CHUẨN DỊCH VỤ",
+      "services.title": "Quy trình rõ ràng và bảo mật tối ưu.",
+      "services.feature1.title": "An toàn tuyệt đối",
+      "services.feature1.desc":
+        "Luồng xử lý riêng biệt, bảo mật tài khoản và minh bạch từng bước.",
+      "services.feature2.title": "Tốc độ tối ưu",
+      "services.feature2.desc":
+        "Nhanh chóng, đúng tiến độ cam kết và luôn có người hỗ trợ kịp thời.",
+      "services.feature3.title": "Gói dịch vụ đa dạng",
+      "services.feature3.desc":
+        "Bao gồm các mức cơ bản, khuyên dùng và nâng cao để phù hợp nhu cầu.",
+      "process.tag": "SECURITY PROTOCOL",
       "process.title": "Quy trình 3 bước khép kín",
       "process.step1.title": "Khởi tạo & Định giá",
       "process.step1.desc":
@@ -73,8 +89,10 @@ document.addEventListener("DOMContentLoaded", () => {
       "process.step3.title": "Bàn giao & Nghiệm thu",
       "process.step3.desc":
         "Hoàn tất chỉ tiêu, chụp ảnh đối soát hệ thống, đăng xuất và gửi thông báo qua Zalo/SĐT.",
-      "pricing.plans_label": "Pricing Plans",
+      "pricing.plans_label": "PRICING PLANS",
       "pricing.title": "Bảng giá niêm yết",
+      "pricing.note":
+        "Ghi chú: Gửi kèm Server, mục tiêu, nội dung yêu cầu và thông tin tài khoản game.",
       "pricing.basic.name": "Cơ bản",
       "pricing.basic.select": "Chọn gói này",
       "pricing.basic.feature1": "Cam kết 400.000 Vàng",
@@ -102,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "pricing.duration.label": "GÓI THEO THỜI GIAN",
       "pricing.duration.title": "Gói cày vàng linh hoạt theo ngày",
       "pricing.duration.subtitle":
-        "   Ưu đãi rõ ràng và giá tốt hơn, Tối thiểu khách phải có 5 - 10 phôi 450.",
+        "Ưu đãi rõ ràng và giá tốt hơn, Tối thiểu khách phải có 5 - 10 phôi 450.",
       "pricing.duration.daily_label": "Mỗi ngày",
       "pricing.duration.total_label": "Tổng vàng",
       "pricing.duration.original_label": "Giá gốc",
@@ -115,70 +133,83 @@ document.addEventListener("DOMContentLoaded", () => {
       "pricing.duration.day15.title": "15 ngày",
       "pricing.duration.day30.badge": "30 NGÀY",
       "pricing.duration.day30.title": "30 ngày",
-      "pricing.note":
-        "Ghi chú: Gửi kèm Server, mục tiêu, nội dung yêu cầu và thông tin tài khoản game.",
-      "services.title": "Quy trình rõ ràng và bảo mật tối ưu.",
-      "services.feature1.title": "An toàn tuyệt đối",
-      "services.feature1.desc":
-        "Luồng xử lý riêng biệt, bảo mật tài khoản và minh bạch từng bước.",
-      "services.feature2.title": "Tốc độ tối ưu",
-      "services.feature2.desc":
-        "Nhanh chóng, đúng tiến độ cam kết và luôn có người hỗ trợ kịp thời.",
-      "services.feature3.title": "Gói dịch vụ đa dạng",
-      "services.feature3.desc":
-        "Bao gồm các mức cơ bản, khuyên dùng và nâng cao để phù hợp nhu cầu.",
-      "contact.support_label": "Direct Support",
-      "contact.title": "Liên hệ",
+      "showcase.tag": "HÌNH ẢNH MINH HỌA",
+      "showcase.title": "Kết quả sau khi chạy vàng",
+      "showcase.subtitle":
+        "Nhấp vào bất kỳ hình ảnh nào để xem chi tiết thông số kiểm định trước khi bàn giao.",
+      "contact.support_label": "DIRECT SUPPORT & DISPATCH",
+      "contact.title": "Kênh điều phối dịch vụ",
       "contact.desc":
-        "Bạn gặp khó khăn trong việc định hình gói? Kết nối trực tiếp với tổng đài viên để được tư vấn phù hợp và thẩm định acc miễn phí.",
-      "contact.form_title": "Liên hệ trực tiếp",
-      "contact.form_desc":
-        "Gửi thông tin tài khoản, nêu mục tiêu và nhận phản hồi nhanh trong vòng 35 phút.",
-      "contact.response":
-        "<strong>Thời gian phản hồi:</strong> 24/7, nhanh trong 35 phút",
-      "contact.note":
-        "<strong>Ghi chú:</strong> Gửi kèm Server, mục tiêu, nội dung yêu cầu và thông tin tài khoản game.",
-      "contact.open_zalo": "MỞ ZALO ĐẶT NGAY",
-      "footer.copy": "© 2026 NarutoGold Agency.",
-      "footer.privacy": "Chính sách bảo mật",
+        "Bạn gặp khó khăn trong việc định hình gói? Kết nối trực tiếp với tổng đài viên để được thẩm định acc miễn phí.",
+      "order.box_title": "⚡ Trạm Khởi Tạo Đơn Nhanh",
+      "order.plan_label": "Gói dịch vụ đã chọn",
+      "order.server_label": "Server / Máy chủ",
+      "order.embryo_label": "Số phôi / Ám 450 hiện có",
+      "contact.open_zalo": "SAO CHÉP ĐƠN & MỞ ZALO NGAY",
+      "contact.email_label": "Email Hỗ Trợ",
+      "contact.sla_label": "Cam kết SLA",
+      "qr.title": "Thanh toán chuyển khoản nhanh",
+      "qr.subtitle":
+        "Quét mã QR bằng ứng dụng Ngân hàng hoặc Ví điện tử bất kỳ để thanh toán chính xác tuyệt đối.",
+      "qr.copy": "Sao chép",
+      "footer.copy": "© 2026 NarutoGold Agency. All Rights Reserved.",
+      "footer.privacy": "CHÍNH SÁCH BẢO MẬT",
     },
     en: {
-      "nav.services": "Services",
-      "nav.process": "Process",
-      "nav.pricing": "Pricing",
-      "nav.contact": "Contact",
+      "topbar.status": "SERVER STATUS: ONLINE • PRIORITY QUEUE OPEN",
+      "topbar.requirement": "Requirement: Minimum 5 - 10 Embryos (Phôi 450)",
+      "nav.services": "SERVICES",
+      "nav.process": "PROCESS",
+      "nav.pricing": "PRICING",
+      "nav.duration": "DAILY PLANS",
+      "nav.showcase": "RESULTS",
+      "nav.contact": "CONTACT",
       "cta.order": "ORDER NOW",
       "cta.contact": "Contact on Zalo",
       "cta.view_pricing": "View pricing",
       "hero.eyebrow": "SECURE STANDARD 2026",
       "hero.title": "Fast, secure <span>Naruto Online MMORPG</span>",
       "hero.desc":
-        "Gold farming solution, optimize combat power, raid faster. Challenger team online 24/7, guaranteed account safety.",
+        "Gold farming solution, optimize combat power. Challenger team online 24/7, guaranteed absolute account safety.",
       "hero.highlights.operational": "Operational",
-      "hero.highlights.insurance": "Account insured",
-      "hero.highlights.response": "Response",
+      "hero.highlights.insurance": "Account Insured",
+      "hero.highlights.response": "Responses",
       "hero.badge": "Verified Pro Tier",
       "hero.card.title": "Top Tier Service",
       "hero.card.desc":
-        "Optimized order flow with dual SSL encryption, delivered on schedule.",
+        "Optimized order flow with dual SSL encryption, delivered right on schedule.",
       "stats.completed": "Completed",
       "stats.rating": "Rating (1.2k reviews)",
       "trust.delivered": "Accounts delivered",
       "trust.safety": "Absolute safety rate",
       "trust.avg_time": "Average handling time",
       "trust.compensation": "200% compensation on violation",
+      "services.tag": "SERVICE STANDARDS",
+      "services.title": "Clear process and optimal security.",
+      "services.feature1.title": "Absolute safety",
+      "services.feature1.desc":
+        "Isolated processing flows, account security and step-by-step transparency.",
+      "services.feature2.title": "Optimized speed",
+      "services.feature2.desc":
+        "Fast, on-time delivery with timely 24/7 human support.",
+      "services.feature3.title": "Diverse service packages",
+      "services.feature3.desc":
+        "Includes Basic, Recommended and Advanced tiers to match your goals.",
+      "process.tag": "SECURITY PROTOCOL",
       "process.title": "3-step closed process",
       "process.step1.title": "Init & Quote",
       "process.step1.desc":
-        "Choose target package, system auto-calculates cost and sends tracking code.",
+        "Choose target package, system auto-calculates cost and generates tracking ID.",
       "process.step2.title": "Anonymous Execution",
       "process.step2.desc":
-        "Booster logs in via isolated VPN matching your geo-location. Never read messages.",
+        "Booster logs in via isolated VPN matching your geo-location. Messages are never read.",
       "process.step3.title": "Handover & Acceptance",
       "process.step3.desc":
-        "Complete targets, capture reconciliation, logout and notify via Zalo/phone.",
-      "pricing.plans_label": "Pricing Plans",
+        "Complete targets, capture reconciliation proof, logout and notify via Zalo/phone.",
+      "pricing.plans_label": "PRICING PLANS",
       "pricing.title": "Listed prices",
+      "pricing.note":
+        "Note: Include Server, target, request details, and game account info.",
       "pricing.basic.name": "Basic",
       "pricing.basic.select": "Select plan",
       "pricing.basic.feature1": "Guaranteed 400,000 Gold",
@@ -189,23 +220,23 @@ document.addEventListener("DOMContentLoaded", () => {
       "pricing.recommended.name": "Recommended",
       "pricing.recommended.ribbon": "RECOMMENDED",
       "pricing.recommended.select": "Select plan",
-      "pricing.recommended.feature1": "Guaranteed 1,200,000 Gold",
-      "pricing.recommended.feature2": "Minimum requirement: 10 ám 450",
+      "pricing.recommended.feature1": "Guaranteed 1,000,000 Gold",
+      "pricing.recommended.feature2": "Minimum requirement: 5 - 10 phôi 450",
       "pricing.recommended.feature3": "100% account insurance",
       "pricing.recommended.feature4":
         "Priority queue (Done within 10-15h after confirmation)",
       "pricing.advanced.name": "Advanced",
       "pricing.advanced.ribbon": "GOD TIER",
       "pricing.advanced.select": "Select plan",
-      "pricing.advanced.feature1": "Guaranteed 20,000,000 Gold",
+      "pricing.advanced.feature1": "Guaranteed 15,000,000 Gold",
       "pricing.advanced.feature2": "Minimum requirement: 20 ám 450",
-      "pricing.advanced.feature3": "Top perks",
-      "pricing.advanced.feature4": "1-on-1 support by nhdinh",
+      "pricing.advanced.feature3": "Top perks & priority",
+      "pricing.advanced.feature4": "1-on-1 direct support by nhdinh",
       "pricing.advanced.response": "Response time: 24/7, within 35 minutes",
       "pricing.duration.label": "TIME-BASED PACKAGES",
       "pricing.duration.title": "Flexible gold farming packages by duration",
       "pricing.duration.subtitle":
-        "Choose the best option for your target with clear discounts and better pricing.",
+        "Clear discounts and better pricing. Minimum requirement: 5 - 10 phôi 450.",
       "pricing.duration.daily_label": "Per day",
       "pricing.duration.total_label": "Total gold",
       "pricing.duration.original_label": "Original price",
@@ -218,38 +249,46 @@ document.addEventListener("DOMContentLoaded", () => {
       "pricing.duration.day15.title": "15 days",
       "pricing.duration.day30.badge": "30 DAYS",
       "pricing.duration.day30.title": "30 days",
-      "pricing.note":
-        "Note: Include Server, target, request details, and game account info.",
-      "services.title": "Clear process and optimal security.",
-      "services.feature1.title": "Absolute safety",
-      "services.feature1.desc":
-        "Isolated processing flows, account security and step-by-step transparency.",
-      "services.feature2.title": "Optimized speed",
-      "services.feature2.desc":
-        "Fast, on-time delivery with timely human support.",
-      "services.feature3.title": "Diverse service packages",
-      "services.feature3.desc":
-        "Includes Basic, Recommended and Advanced tiers to match needs.",
-      "contact.support_label": "Direct Support",
+      "showcase.tag": "VERIFIED SHOWCASE",
+      "showcase.title": "Results after gold farming",
+      "showcase.subtitle":
+        "Click on any image to inspect our pre-handover verification checklist.",
+      "contact.support_label": "DIRECT SUPPORT & DISPATCH",
       "contact.title": "Service coordination",
       "contact.desc":
         "Need help choosing a package? Connect directly with an agent for a free account assessment.",
-      "contact.form_title": "Direct contact",
-      "contact.form_desc":
-        "Send your account details, state your goal, and receive a fast reply within 35 minutes.",
-      "contact.response":
-        "<strong>Response time:</strong> 24/7, within 35 minutes",
-      "contact.note":
-        "<strong>Note:</strong> Include Server, target, request details and game account info.",
-      "contact.open_zalo": "OPEN ZALO",
-      "footer.copy": "© 2026 NarutoGold Agency.",
-      "footer.privacy": "Privacy Policy",
+      "order.box_title": "⚡ Quick Order Dispatch",
+      "order.plan_label": "Selected Package",
+      "order.server_label": "Server ID",
+      "order.embryo_label": "Current Phôi / Ám 450",
+      "contact.open_zalo": "COPY ORDER & OPEN ZALO",
+      "contact.email_label": "Support Email",
+      "contact.sla_label": "SLA Commitment",
+      "qr.title": "Instant VietQR Transfer",
+      "qr.subtitle":
+        "Scan with any Banking App or E-Wallet for instant and accurate payment.",
+      "qr.copy": "Copy",
+      "footer.copy": "© 2026 NarutoGold Agency. All Rights Reserved.",
+      "footer.privacy": "PRIVACY POLICY",
     },
   };
 
   const prefersReducedMotion = globalThis.matchMedia(
     "(prefers-reduced-motion: reduce)",
   ).matches;
+
+  function showToast(message) {
+    const toast = document.getElementById("toast-notification");
+    const msgEl = document.getElementById("toast-message");
+    if (!toast || !msgEl) return;
+
+    msgEl.textContent = message;
+    toast.classList.add("show");
+    clearTimeout(toast.dataset.timer);
+    toast.dataset.timer = setTimeout(() => {
+      toast.classList.remove("show");
+    }, 3200);
+  }
 
   function translatePage(lang) {
     document.documentElement.lang = lang;
@@ -294,32 +333,18 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const applyLanguage = (lang) => {
-      if (!translations[lang]) {
-        return;
-      }
+      if (!translations[lang]) return;
       localStorage.setItem("site_lang", lang);
       translatePage(lang);
       updateLanguageUI(lang);
-      if (langMenu) {
-        langMenu.classList.remove("is-open");
-      }
-      if (langToggle) {
-        langToggle.setAttribute("aria-expanded", "false");
-      }
+      langMenu?.classList.remove("is-open");
+      langToggle?.setAttribute("aria-expanded", "false");
     };
 
-    if (langSelect) {
-      langSelect.addEventListener("change", (event) => {
-        applyLanguage(event.target.value);
-      });
-    }
-
-    if (langToggle && langMenu) {
-      langToggle.addEventListener("click", () => {
-        const isOpen = langMenu.classList.toggle("is-open");
-        langToggle.setAttribute("aria-expanded", String(isOpen));
-      });
-    }
+    langToggle?.addEventListener("click", () => {
+      const isOpen = langMenu.classList.toggle("is-open");
+      langToggle.setAttribute("aria-expanded", String(isOpen));
+    });
 
     langOptions.forEach((option) => {
       option.addEventListener("click", () => {
@@ -341,8 +366,10 @@ document.addEventListener("DOMContentLoaded", () => {
     applyLanguage(savedLang);
   }
 
-  function initHeader() {
-    const header = document.querySelector(".site-header");
+  function initHeaderAndMobileNav() {
+    const header = document.getElementById("site-header");
+    const mobileToggle = document.getElementById("mobile-menu-toggle");
+    const navMenu = document.getElementById("site-nav");
 
     if (header) {
       const updateHeaderState = () =>
@@ -350,17 +377,99 @@ document.addEventListener("DOMContentLoaded", () => {
       updateHeaderState();
       window.addEventListener("scroll", updateHeaderState, { passive: true });
     }
+
+    if (mobileToggle && navMenu) {
+      mobileToggle.addEventListener("click", () => {
+        const isOpen = navMenu.classList.toggle("is-open");
+        mobileToggle.setAttribute("aria-expanded", String(isOpen));
+      });
+
+      navMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navMenu.classList.remove("is-open");
+          mobileToggle.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+  }
+
+  function initSpotlightAndTilt() {
+    if (prefersReducedMotion) return;
+
+    const spotlightCards = document.querySelectorAll(".spotlight-card");
+    spotlightCards.forEach((card) => {
+      card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty("--mouse-x", `${x}px`);
+        card.style.setProperty("--mouse-y", `${y}px`);
+      });
+    });
+
+    const tiltCard = document.querySelector(".tilt-card");
+    if (tiltCard) {
+      tiltCard.addEventListener("mousemove", (e) => {
+        const rect = tiltCard.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        tiltCard.style.transform = `perspective(1000px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg)`;
+      });
+      tiltCard.addEventListener("mouseleave", () => {
+        tiltCard.style.transform = "";
+      });
+    }
+  }
+
+  function initChakraParticles() {
+    const canvas = document.getElementById("chakra-canvas");
+    if (!canvas || prefersReducedMotion) return;
+
+    const ctx = canvas.getContext("2d");
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    const particles = Array.from({ length: 34 }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      r: Math.random() * 2.2 + 0.8,
+      vy: -(Math.random() * 0.45 + 0.15),
+      vx: (Math.random() - 0.5) * 0.3,
+      alpha: Math.random() * 0.55 + 0.2,
+      color: Math.random() > 0.3 ? "#ff6a00" : "#00e5ff",
+    }));
+
+    window.addEventListener("resize", () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    function render() {
+      ctx.clearRect(0, 0, width, height);
+      for (const p of particles) {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.y < -10) {
+          p.y = height + 10;
+          p.x = Math.random() * width;
+        }
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = p.alpha;
+        ctx.fill();
+      }
+      requestAnimationFrame(render);
+    }
+    render();
   }
 
   function initRevealEffects() {
     const animatedElements = document.querySelectorAll(".animate");
-
-    if (!animatedElements.length) {
-      return;
-    }
+    if (!animatedElements.length) return;
 
     if (prefersReducedMotion || !("IntersectionObserver" in globalThis)) {
-      animatedElements.forEach((element) => element.classList.add("visible"));
+      animatedElements.forEach((el) => el.classList.add("visible"));
       return;
     }
 
@@ -373,17 +482,15 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -10% 0px" },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
     );
 
-    animatedElements.forEach((element) => observer.observe(element));
+    animatedElements.forEach((el) => observer.observe(el));
   }
 
   function initCounters() {
     const counters = document.querySelectorAll(".counter");
-    if (!counters.length) {
-      return;
-    }
+    if (!counters.length) return;
 
     if (prefersReducedMotion || !("IntersectionObserver" in globalThis)) {
       counters.forEach((counter) => animateCounter(counter));
@@ -399,25 +506,39 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
       },
-      { threshold: 0.4 },
+      { threshold: 0.35 },
     );
 
     counters.forEach((counter) => observer.observe(counter));
   }
 
   function initShowcaseModal() {
+    const track = document.getElementById("showcase-track");
+    if (track && !track.dataset.cloned) {
+      // Nhân đôi các thẻ để chạy vòng lặp vô tận mượt mà không bị giật
+      const clones = Array.from(track.children).map((node) =>
+        node.cloneNode(true),
+      );
+      clones.forEach((clone) => track.appendChild(clone));
+      track.dataset.cloned = "true";
+    }
+
     const modal = document.getElementById("showcase-modal");
     const image = document.getElementById("showcase-modal-image");
     const title = document.getElementById("showcase-modal-title");
     const list = document.getElementById("showcase-modal-list");
     const closeButton = document.querySelector(".showcase-modal-close");
-    const cards = document.querySelectorAll(".showcase-card");
+    const prevBtn = document.getElementById("modal-prev-btn");
+    const nextBtn = document.getElementById("modal-next-btn");
+    const cards = Array.from(document.querySelectorAll(".showcase-card"));
 
-    if (!modal || !image || !title || !list || !closeButton) {
-      return;
-    }
+    if (!modal || !image || !title || !list || !closeButton) return;
 
-    const openModal = (card) => {
+    let currentIndex = 0;
+
+    const openModalAt = (index) => {
+      currentIndex = (index + cards.length) % cards.length;
+      const card = cards[currentIndex];
       const img = card.querySelector("img");
       const items = (card.dataset.items || "").split("|");
 
@@ -428,6 +549,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .filter(Boolean)
         .map((item) => `<li>${item}</li>`)
         .join("");
+
       modal.classList.add("is-active");
       modal.setAttribute("aria-hidden", "false");
     };
@@ -437,50 +559,254 @@ document.addEventListener("DOMContentLoaded", () => {
       modal.setAttribute("aria-hidden", "true");
     };
 
-    cards.forEach((card) => {
-      card.addEventListener("click", () => openModal(card));
+    cards.forEach((card, idx) => {
+      card.addEventListener("click", () => openModalAt(idx));
     });
 
+    prevBtn?.addEventListener("click", () => openModalAt(currentIndex - 1));
+    nextBtn?.addEventListener("click", () => openModalAt(currentIndex + 1));
     closeButton.addEventListener("click", closeModal);
+
     modal.addEventListener("click", (event) => {
-      if (event.target === modal) {
-        closeModal();
-      }
+      if (event.target === modal) closeModal();
     });
 
     document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && modal.classList.contains("is-active")) {
-        closeModal();
+      if (!modal.classList.contains("is-active")) return;
+      if (event.key === "Escape") closeModal();
+      if (event.key === "ArrowLeft") openModalAt(currentIndex - 1);
+      if (event.key === "ArrowRight") openModalAt(currentIndex + 1);
+    });
+  }
+
+  function initPlanSelectorAndOrder() {
+    const planButtons = document.querySelectorAll(".btn-select-plan");
+    const selectInput = document.getElementById("selected-plan-input");
+    const serverInput = document.getElementById("server-input");
+    const embryoInput = document.getElementById("embryo-input");
+    const copyAndZaloBtn = document.getElementById("copy-and-zalo-btn");
+    const copyStkBtn = document.getElementById("copy-stk-btn");
+
+    planButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const chosenPlan = btn.dataset.plan;
+        if (chosenPlan && selectInput) {
+          selectInput.value = chosenPlan;
+          showToast(`Đã chọn: ${chosenPlan}`);
+          setTimeout(() => serverInput?.focus(), 600);
+        }
+      });
+    });
+
+    copyAndZaloBtn?.addEventListener("click", async () => {
+      const plan = selectInput?.value || "Gói Khuyên Dùng";
+      const server = serverInput?.value.trim() || "Chưa nhập";
+      const embryo = embryoInput?.value.trim() || "Đủ phôi theo quy định";
+
+      const orderSummary = `[NHDINHGOLD - ĐẶT ĐƠN]\n• Gói: ${plan}\n• Server: ${server}\n• Số phôi/Ám: ${embryo}\nNhờ ad chạy vàng và xếp lịch chạy giúp mình!`;
+
+      try {
+        await navigator.clipboard.writeText(orderSummary);
+        showToast("Đã sao chép thông tin đơn! Đang mở Zalo...");
+      } catch {
+        showToast("Đang chuyển hướng sang Zalo...");
+      }
+
+      setTimeout(() => {
+        window.open(
+          "https://zalo.me/0389307257",
+          "_blank",
+          "noopener,noreferrer",
+        );
+      }, 650);
+    });
+
+    copyStkBtn?.addEventListener("click", async () => {
+      const stk = copyStkBtn.dataset.copy || "19074486671011";
+      try {
+        await navigator.clipboard.writeText(stk);
+        showToast("Đã sao chép STK Techcombank: 1907 4486 6710 11");
+      } catch {
+        showToast("STK: 19074486671011");
       }
     });
   }
 
-  window.showOverloadAlert = () => {
+  function initSystemModal() {
     const modal = document.getElementById("overload-modal");
-    if (modal) {
-      modal.classList.add("is-active");
-    }
-  };
+    const openBtn = document.getElementById("open-rule-btn");
+    const closeX = document.getElementById("close-overload-x");
+    const closeBtn = document.getElementById("close-overload-btn");
+    const viewPlansBtn = document.getElementById("modal-view-plans-btn");
 
-  window.closeOverloadAlert = () => {
-    const modal = document.getElementById("overload-modal");
-    if (modal) {
-      modal.classList.remove("is-active");
-    }
-  };
+    const showModal = () => modal?.classList.add("is-active");
+    const hideModal = () => {
+      modal?.classList.remove("is-active");
+      sessionStorage.setItem("nhdinh_rule_seen", "true");
+    };
 
-  window.scrollToDurationPlans = () => {
-    window.closeOverloadAlert();
-    const durationSection = document.querySelector(".duration-section");
-    if (durationSection) {
-      durationSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    openBtn?.addEventListener("click", showModal);
+    closeX?.addEventListener("click", hideModal);
+    closeBtn?.addEventListener("click", hideModal);
+    viewPlansBtn?.addEventListener("click", () => {
+      hideModal();
+      document
+        .getElementById("pricing")
+        ?.scrollIntoView({ behavior: "smooth" });
+    });
+
+    // Giữ tương thích ngược với các hàm global nếu cần
+    window.showOverloadAlert = showModal;
+    window.closeOverloadAlert = hideModal;
+
+    if (!sessionStorage.getItem("nhdinh_rule_seen")) {
+      showModal();
     }
-  };
+  }
+
+  function initLiveTicker() {
+    const ticker = document.getElementById("live-ticker");
+    const titleEl = document.getElementById("ticker-title");
+    const descEl = document.getElementById("ticker-desc");
+    const closeBtn = document.getElementById("ticker-close");
+
+    if (!ticker || !titleEl || !descEl) return;
+
+    const events = [
+      {
+        title: "Khách hàng Server S62 • Vừa xong",
+        desc: "Vừa chốt Gói Khuyên Dùng (+1.000.000 Vàng)",
+      },
+      {
+        title: "Khách hàng Server S51 • 1 phút trước",
+        desc: "Vừa hoàn tất Gói 15 Ngày (+6.000.000 Vàng)",
+      },
+      {
+        title: "Khách hàng Server S41 • Vừa xong",
+        desc: "Vừa đăng ký Gói 30 Ngày (Ưu đãi 30% - 12M Vàng)",
+      },
+      {
+        title: "Khách hàng Server S67 • 2 phút trước",
+        desc: "Đã nghiệm thu Gói Cơ Bản (+400.000 Vàng trong 2h)",
+      },
+      {
+        title: "Khách hàng Server S78 • Vừa xong",
+        desc: "Vừa kích hoạt Gói Nâng Cao GOD TIER (+15.000.000 Vàng)",
+      },
+      {
+        title: "Khách hàng Server S80 • 1 phút trước",
+        desc: "Vừa đăng ký Gói 7 Ngày (+2.800.000 Vàng)",
+      },
+      {
+        title: "Khách hàng Server S21 • 3 phút trước",
+        desc: "Vừa hoàn tất Gói Khuyên Dùng (Đủ 10 phôi 450)",
+      },
+      {
+        title: "Khách hàng Server S56 • Vừa xong",
+        desc: "Vừa chốt Gói 15 Ngày (Luồng ưu tiên 2.100.000đ)",
+      },
+      {
+        title: "Khách hàng Server S71 • 2 phút trước",
+        desc: "Đã bàn giao xong 1.000.000 Vàng (Bảo hiểm 100%)",
+      },
+      {
+        title: "Khách hàng Server S41 • 4 phút trước",
+        desc: "Gia hạn tiếp Gói 30 Ngày (+12.000.000 Vàng)",
+      },
+      {
+        title: "Khách hàng Server S89 • Vừa xong",
+        desc: "Vừa hoàn tất Gói 15 Ngày (+6.000.000 Vàng)",
+      },
+      {
+        title: "Khách hàng Server S62 • 3 phút trước",
+        desc: "Đã nghiệm thu Gói 7 Ngày (+2.800.000 Vàng)",
+      },
+      {
+        title: "Khách hàng Server S142 • Vừa xong",
+        desc: "Vừa chốt Gói Khuyên Dùng (+1.000.000 Vàng)",
+      },
+      {
+        title: "Khách hàng Server S55 • 2 phút trước",
+        desc: "Vừa đăng ký Gói 30 Ngày (Tiết kiệm 30%)",
+      },
+      {
+        title: "Khách hàng Server S78 • 5 phút trước",
+        desc: "Đã bàn giao Gói Cơ Bản (+400.000 Vàng siêu tốc)",
+      },
+      {
+        title: "Khách hàng Server S201 • Vừa xong",
+        desc: "Đã nghiệm thu Gói Cơ Bản trong 2h15p",
+      },
+      {
+        title: "Khách hàng Server S51 • 3 phút trước",
+        desc: "Vừa chốt Gói GOD TIER (Hỗ trợ 1-1 bởi nhdinh)",
+      },
+      {
+        title: "Khách hàng Server S67 • Vừa xong",
+        desc: "Vừa thanh toán VietQR Gói 15 Ngày (+6.000.000 Vàng)",
+      },
+      {
+        title: "Khách hàng Server S80 • 2 phút trước",
+        desc: "Đã nhận bàn giao 2.800.000 Vàng đúng tiến độ",
+      },
+      {
+        title: "Khách hàng Server S21 • Vừa xong",
+        desc: "Vừa đăng ký Gói Khuyên Dùng (Luồng ưu tiên VIP)",
+      },
+      {
+        title: "Khách hàng Server S56 • 4 phút trước",
+        desc: "Đã nghiệm thu Gói 30 Ngày (+12.000.000 Vàng)",
+      },
+      {
+        title: "Khách hàng Server S71 • Vừa xong",
+        desc: "Vừa chốt Gói Cơ Bản (Có sẵn 10 phôi 450)",
+      },
+    ];
+
+    // Xáo trộn ngẫu nhiên danh sách mỗi lần tải trang để không bị lặp thứ tự
+    const shuffledEvents = [...events].sort(() => Math.random() - 0.5);
+
+    let idx = 0;
+    let dismissed = false;
+    let hideTimeout;
+
+    closeBtn?.addEventListener("click", () => {
+      dismissed = true;
+      ticker.classList.remove("is-visible");
+      clearTimeout(hideTimeout);
+    });
+
+    const showNextTicker = () => {
+      if (dismissed) return;
+      const item = shuffledEvents[idx % shuffledEvents.length];
+      titleEl.textContent = item.title;
+      descEl.textContent = item.desc;
+      ticker.classList.add("is-visible");
+
+      clearTimeout(hideTimeout);
+      hideTimeout = setTimeout(() => {
+        ticker.classList.remove("is-visible");
+      }, 4200); // Hiện trong 4.2 giây
+
+      idx++;
+    };
+
+    // Hiển thị thông báo đầu tiên ngay sau 2 giây khi vừa vào web
+    setTimeout(() => {
+      showNextTicker();
+      // Sau đó cứ mỗi 6.5 giây lại nhảy 1 server mới liên tục
+      setInterval(showNextTicker, 6500);
+    }, 2000);
+  }
 
   initLanguageSwitcher();
-  initHeader();
+  initHeaderAndMobileNav();
+  initSpotlightAndTilt();
+  initChakraParticles();
   initRevealEffects();
   initCounters();
   initShowcaseModal();
-  window.showOverloadAlert();
+  initPlanSelectorAndOrder();
+  initSystemModal();
+  initLiveTicker();
 });
