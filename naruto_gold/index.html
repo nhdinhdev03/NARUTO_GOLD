@@ -10,7 +10,7 @@
       name="description"
       content="NarutoGold - Dịch vụ cày vàng và tối ưu lực chiến Naruto Online MMORPG an toàn 100%, bảo mật SSL kép, hỗ trợ 24/7 bởi nhdinh."
     />
-    <meta name="theme-color" content="#03050c" />
+    <meta name="theme-color" content="#03050b" />
     <link rel="icon" type="image/svg+xml" href="naruto.webp" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,7 +21,7 @@
     />
   </head>
   <body>
-    <!-- Hiệu ứng nền không gian & hạt Chakra -->
+    <!-- Hiệu ứng nền không gian & hạt Chakra 60FPS -->
     <canvas id="chakra-canvas" aria-hidden="true"></canvas>
     <div class="ambient-grid" aria-hidden="true"></div>
     <div class="ambient-glow glow-1" aria-hidden="true"></div>
@@ -58,8 +58,9 @@
       </div>
     </div>
 
-    <!-- HEADER -->
+    <!-- HEADER: Chỉ giữ đúng 4 mục chính DỊCH VỤ • BẢNG GIÁ • KẾT QUẢ • LIÊN HỆ -->
     <header class="site-header" id="site-header">
+      <div class="scroll-progress-bar" id="scroll-progress-bar"></div>
       <div class="container header-inner">
         <a class="logo" href="#">
           <div class="logo-mark">
@@ -88,14 +89,15 @@
         </a>
 
         <nav id="site-nav" class="nav-menu" aria-label="Điều hướng chính">
-          <a href="#services" class="nav-link" data-i18n="nav.services"
+          <a
+            href="#services"
+            class="nav-link is-active"
+            data-i18n="nav.services"
             >DỊCH VỤ</a
           >
-
           <a href="#pricing" class="nav-link" data-i18n="nav.pricing"
             >BẢNG GIÁ</a
           >
-
           <a href="#showcase" class="nav-link" data-i18n="nav.showcase"
             >KẾT QUẢ</a
           >
@@ -209,7 +211,7 @@
                 href="https://zalo.me/0389307257"
                 target="_blank"
                 rel="noreferrer"
-                class="btn btn-primary btn-glow"
+                class="btn btn-primary btn-shimmer"
               >
                 <span data-i18n="cta.contact">Liên hệ Zalo</span>
                 <svg
@@ -290,7 +292,6 @@
                 tiến độ cam kết.
               </p>
 
-              <!-- Live Telemetry Bar -->
               <div class="telemetry-box">
                 <div class="telemetry-row">
                   <span>VPN Isolation Tunnel</span>
@@ -327,40 +328,8 @@
         </div>
       </section>
 
-      <!-- TRUST METRICS BAR -->
-      <section class="trust-section animate">
-        <div class="container">
-          <div class="trust-grid">
-            <div class="trust-item spotlight-card">
-              <strong class="counter-val">
-                <span class="counter" data-target="1250" data-suffix="+"
-                  >0</span
-                >
-              </strong>
-              <p data-i18n="trust.delivered">Tài khoản đã bàn giao</p>
-            </div>
-            <div class="trust-item spotlight-card">
-              <strong class="counter-val">
-                <span class="counter" data-target="100" data-suffix="%">0</span>
-              </strong>
-              <p data-i18n="trust.safety">Tỷ lệ an toàn tuyệt đối</p>
-            </div>
-            <div class="trust-item spotlight-card">
-              <strong class="counter-val">
-                <span class="counter" data-target="24" data-suffix="h">0</span>
-              </strong>
-              <p data-i18n="trust.avg_time">Thời gian xử lý trung bình</p>
-            </div>
-            <div class="trust-item spotlight-card">
-              <strong class="counter-val accent">0% Risk</strong>
-              <p data-i18n="trust.compensation">Đền bù 200% nếu vi phạm</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SERVICES / CORE VALUES -->
-      <section id="services" class="section">
+      <!-- 1. DỊCH VỤ (#services) -->
+      <section id="services" class="section nav-section">
         <div class="container">
           <div class="section-header center animate">
             <span class="section-tag" data-i18n="services.tag"
@@ -431,11 +400,38 @@
               </p>
             </article>
           </div>
+
+          <div class="trust-grid animate">
+            <div class="trust-item spotlight-card">
+              <strong class="counter-val">
+                <span class="counter" data-target="1250" data-suffix="+"
+                  >0</span
+                >
+              </strong>
+              <p data-i18n="trust.delivered">Tài khoản đã bàn giao</p>
+            </div>
+            <div class="trust-item spotlight-card">
+              <strong class="counter-val">
+                <span class="counter" data-target="100" data-suffix="%">0</span>
+              </strong>
+              <p data-i18n="trust.safety">Tỷ lệ an toàn tuyệt đối</p>
+            </div>
+            <div class="trust-item spotlight-card">
+              <strong class="counter-val">
+                <span class="counter" data-target="24" data-suffix="h">0</span>
+              </strong>
+              <p data-i18n="trust.avg_time">Thời gian xử lý trung bình</p>
+            </div>
+            <div class="trust-item spotlight-card">
+              <strong class="counter-val accent">0% Risk</strong>
+              <p data-i18n="trust.compensation">Đền bù 200% nếu vi phạm</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <!-- PRICING PLANS -->
-      <section id="pricing" class="section">
+      <!-- 2. BẢNG GIÁ (#pricing) -->
+      <section id="pricing" class="section nav-section">
         <div class="container">
           <div class="section-header center animate">
             <span class="section-tag" data-i18n="pricing.plans_label"
@@ -558,7 +554,7 @@
               </div>
               <a
                 href="#contact"
-                class="btn btn-primary btn-select-plan"
+                class="btn btn-primary btn-shimmer btn-select-plan"
                 data-plan="GÓI KHUYÊN DÙNG (400.000 cá - 1.200.000 Vàng)"
                 data-i18n="pricing.recommended.select"
               >
@@ -642,8 +638,8 @@
         </div>
       </section>
 
-      <!-- SHOWCASE GALLERY -->
-      <section id="showcase" class="section showcase-section">
+      <!-- 3. KẾT QUẢ (#showcase) -->
+      <section id="showcase" class="section showcase-section nav-section">
         <div class="container">
           <div class="section-header center animate">
             <span class="section-tag" data-i18n="showcase.tag"
@@ -654,10 +650,28 @@
               Nhấp vào bất kỳ hình ảnh nào để xem chi tiết thông số kiểm định
               trước khi bàn giao.
             </p>
+            <div class="showcase-controls">
+              <button
+                type="button"
+                class="showcase-ctrl-btn"
+                id="showcase-toggle-play"
+                aria-label="Tạm dừng hoặc Tiếp tục trượt"
+              >
+                ⏸ Tạm dừng trượt
+              </button>
+              <button
+                type="button"
+                class="showcase-ctrl-btn primary"
+                id="showcase-open-first"
+              >
+                🔍 Mở chế độ xem chi tiết (7 ảnh)
+              </button>
+            </div>
           </div>
 
           <div
             class="showcase-marquee"
+            id="showcase-marquee"
             aria-label="Slide show hình ảnh minh họa"
           >
             <div class="showcase-marquee-track" id="showcase-track">
@@ -819,7 +833,7 @@
         </div>
       </section>
 
-      <!-- CONTACT & DISPATCH CONSOLE -->
+      <!-- 4. LIÊN HỆ (#contact) -->
       <section id="contact" class="section contact-section">
         <div class="container">
           <div class="contact-dual-grid">
@@ -878,7 +892,7 @@
                       <input
                         type="text"
                         id="server-input"
-                        placeholder="VD: S125, S88..."
+                        placeholder="VD: S55, S81..."
                       />
                     </div>
                     <div class="form-field">
@@ -1039,7 +1053,7 @@
       </section>
     </main>
 
-    <!-- FOOTER -->
+    <!-- FOOTER: Đồng bộ đúng 4 mục chính -->
     <footer class="site-footer">
       <div class="container footer-inner">
         <div class="footer-copy">
@@ -1050,9 +1064,9 @@
         </div>
         <div class="footer-links">
           <a href="#services" data-i18n="nav.services">DỊCH VỤ</a>
-
           <a href="#pricing" data-i18n="nav.pricing">BẢNG GIÁ</a>
-          <a href="#contact" data-i18n="footer.privacy">CHÍNH SÁCH BẢO MẬT</a>
+          <a href="#showcase" data-i18n="nav.showcase">KẾT QUẢ</a>
+          <a href="#contact" data-i18n="nav.contact">LIÊN HỆ</a>
         </div>
       </div>
     </footer>
@@ -1061,8 +1075,8 @@
     <div class="live-ticker" id="live-ticker" aria-live="polite">
       <div class="ticker-avatar">⚡</div>
       <div class="ticker-content">
-        <strong id="ticker-title">Khách hàng Server S89</strong>
-        <span id="ticker-desc">Vừa hoàn tất Gói 15 Ngày (+6.000.000 Vàng)</span>
+        <strong id="ticker-title">Khách hàng Server S62 • Vừa xong</strong>
+        <span id="ticker-desc">Vừa chốt Gói Khuyên Dùng (+1.200.000 Vàng)</span>
       </div>
       <button
         type="button"
@@ -1098,7 +1112,12 @@
           <img id="showcase-modal-image" src="" alt="Hình ảnh minh họa" />
         </div>
         <div class="showcase-modal-content">
-          <span class="showcase-modal-tag">INSPECTION REPORT</span>
+          <div class="showcase-modal-meta">
+            <span class="showcase-modal-tag">INSPECTION REPORT</span>
+            <span class="showcase-modal-counter" id="showcase-modal-counter"
+              >1 / 7</span
+            >
+          </div>
           <h3 id="showcase-modal-title">Tiêu đề</h3>
           <ul id="showcase-modal-list" class="showcase-modal-list"></ul>
           <div class="showcase-modal-nav">
@@ -1186,7 +1205,7 @@
             Đã hiểu & Đóng
           </button>
           <button
-            class="btn btn-primary"
+            class="btn btn-primary btn-shimmer"
             type="button"
             id="modal-view-plans-btn"
           >
