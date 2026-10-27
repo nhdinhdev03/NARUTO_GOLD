@@ -7,7 +7,7 @@ function animateCounter(element) {
   const suffix = element.dataset.suffix || "";
   const prefix = element.dataset.prefix || "";
   const decimals = Number(element.dataset.decimals || 0);
-  const duration = Number(element.dataset.duration || 1500);
+  const duration = Number(element.dataset.duration || 1600);
   const startTime = performance.now();
   const startValue = Number(element.dataset.start || 0);
 
@@ -40,47 +40,57 @@ document.addEventListener("DOMContentLoaded", () => {
   const translations = {
     vi: {
       "topbar.status":
-        "SERVER STATUS: ONLINE (S1 - S81) • LUỒNG ƯU TIÊN ĐANG MỞ",
+        "ENTERPRISE NETWORK: 81/81 CLUSTERS (S1 - S81) ONLINE • 10M+ USERS",
       "topbar.requirement": "Quy định phôi: Tối thiểu 5 - 10 phôi 450",
       "nav.services": "DỊCH VỤ",
       "nav.pricing": "BẢNG GIÁ",
       "nav.showcase": "KẾT QUẢ",
       "nav.contact": "LIÊN HỆ",
       "cta.order": "ĐẶT ĐƠN NGAY",
-      "cta.contact": "Liên hệ Zalo",
-      "cta.view_pricing": "Xem bảng giá",
-      "hero.eyebrow": "HỆ THỐNG AN TOÀN TIÊU CHUẨN 2026",
-      "hero.title": "Nhanh chóng, bảo mật <span>Naruto Online MMORPG</span>",
+      "cta.contact": "Kết nối Zalo Tổng Đài",
+      "cta.view_pricing": "Trạm tính vàng & Bảng giá",
+      "hero.eyebrow":
+        "HỆ SINH THÁI 10.000.000+ GAME THỦ TIN DÙNG • CHUẨN 2026",
+      "hero.title":
+        "Đế chế Cày Vàng & Tối ưu <span>Naruto Online MMORPG</span>",
       "hero.desc":
-        "Giải pháp cày vàng, tối ưu lực chiến cho toàn bộ máy chủ S1 - S81. Đội ngũ trực chiến 24/7, cam kết an toàn tài khoản tuyệt đối.",
-      "hero.highlights.operational": "Hoạt động",
-      "hero.highlights.insurance": "Bảo hiểm Acc",
-      "hero.highlights.response": "Phản hồi",
-      "hero.badge": "Verified Pro Tier",
-      "hero.card.title": "Top Tier Service",
+        "Hạ tầng tự động hóa & đội ngũ trực chiến 24/7 phủ sóng toàn bộ cụm máy chủ <strong>S1 – S81</strong>. Bảo mật VPN cô lập kép, cam kết bảo hiểm tài khoản 100%.",
+      "hero.highlights.operational": "Hệ sinh thái User",
+      "hero.highlights.insurance": "Bảo hiểm Tuyệt đối",
+      "hero.highlights.response": "Phủ sóng toàn Server",
+      "hero.badge": "ENTERPRISE PRO TIER",
+      "hero.card.title": "NHDINH Core Engine™",
       "hero.card.desc":
-        "Luồng xử lý đơn hàng tối ưu với mã hóa SSL kép, bàn giao đúng tiến độ cam kết.",
-      "stats.completed": "Hoàn thành",
-      "stats.rating": "Rating (1.2k Đánh giá)",
-      "trust.delivered": "Tài khoản đã bàn giao",
-      "trust.safety": "Tỷ lệ an toàn tuyệt đối",
-      "trust.avg_time": "Thời gian xử lý trung bình",
-      "trust.compensation": "Đền bù 200% nếu vi phạm",
-      "services.tag": "TIÊU CHUẨN DỊCH VỤ",
-      "services.title": "Quy trình rõ ràng và bảo mật tối ưu.",
+        "Trung tâm điều phối đơn hàng công suất lớn với mã hóa SSL 256-bit kép, cam kết bàn giao chuẩn từng phút.",
+      "stats.completed": "Người dùng tin cậy",
+      "stats.rating": "5.0★ (98.5k Đánh giá)",
+      "trust.delivered": "Cộng đồng & Lượt truy cập",
+      "trust.gold_total": "Tổng lượng Vàng đã bàn giao",
+      "trust.safety": "Tỷ lệ an toàn tài khoản",
+      "trust.compensation": "Cam kết đền bù nếu vi phạm",
+      "services.tag": "HẠ TẦNG DỊCH VỤ ENTERPRISE",
+      "services.title": "Quy trình chuẩn tập đoàn & bảo mật tối đa.",
+      "services.subtitle":
+        "Vận hành trên hệ thống phân luồng độc lập cho toàn bộ 81 máy chủ, đảm bảo tốc độ bàn giao nhanh gấp 3 lần tiêu chuẩn thông thường.",
       "services.feature1.title": "An toàn tuyệt đối",
       "services.feature1.desc":
-        "Luồng xử lý riêng biệt, bảo mật tài khoản và minh bạch từng bước.",
+        "Mỗi tài khoản được gán một IP VPN riêng biệt trùng khớp vị trí địa lý. Tuyệt đối bảo mật thông tin và vật phẩm.",
       "services.feature2.title": "Tốc độ tối ưu",
       "services.feature2.desc":
-        "Nhanh chóng, đúng tiến độ cam kết và luôn có người hỗ trợ kịp thời.",
+        "Hệ thống phân bổ Booster tự động ngay khi chốt đơn, hoàn tất nhiệm vụ trong 2h – 15h kèm báo cáo trực tiếp.",
       "services.feature3.title": "Gói dịch vụ đa dạng",
       "services.feature3.desc":
-        "Bao gồm các mức cơ bản, khuyên dùng và nâng cao để phù hợp nhu cầu.",
-      "pricing.plans_label": "PRICING PLANS",
-      "pricing.title": "Bảng giá niêm yết",
+        "Từ gói Cơ Bản chạy siêu tốc đến gói GOD TIER 15.000.000 Vàng do đích thân CEO nhdinh giám sát 1-1.",
+      "cluster.title": "Trạng thái 81 Máy Chủ (S1 – S81) Thời Gian Thực",
+      "cluster.sub":
+        "Nhấp vào cụm Server của bạn để chuyển thẳng tới Trạm Đặt Đơn",
+      "pricing.plans_label": "PRICING & GOLD SIMULATOR",
+      "pricing.title": "Bảng giá niêm yết chuẩn 2026",
       "pricing.note":
-        "Ghi chú: Gửi kèm Server (S1 - S81), mục tiêu, nội dung yêu cầu và thông tin tài khoản game.",
+        "Áp dụng đồng nhất trên toàn bộ máy chủ S1 – S81. Cam kết đúng tiến độ và bảo hiểm 100%.",
+      "sim.title": "Ước tính nhanh sản lượng Vàng & Chi phí",
+      "sim.desc":
+        "Kéo thanh trượt để mô phỏng ngân sách dự kiến theo tỷ lệ chuẩn <strong>400.000 cá = 1.200.000 Vàng</strong>.",
       "pricing.basic.name": "Cơ bản",
       "pricing.basic.select": "Chọn gói này",
       "pricing.basic.feature1": "Cam kết 400.000 Vàng",
@@ -105,14 +115,14 @@ document.addEventListener("DOMContentLoaded", () => {
       "pricing.advanced.feature4": "Hỗ trợ trực tiếp 1-1 bởi nhdinh",
       "pricing.advanced.response":
         "Thời gian phản hồi: 24/7, nhanh trong 35 phút",
-      "showcase.tag": "HÌNH ẢNH MINH HỌA",
+      "showcase.tag": "BẰNG CHỨNG NGHIỆM THU THỰC TẾ",
       "showcase.title": "Kết quả sau khi chạy vàng",
       "showcase.subtitle":
-        "Nhấp vào bất kỳ hình ảnh nào để xem chi tiết thông số kiểm định trước khi bàn giao.",
-      "contact.support_label": "DIRECT SUPPORT & DISPATCH",
+        "Nhấp vào bất kỳ hình ảnh nào để mở Báo Cáo Kiểm Định (Inspection Report) độ phân giải cao.",
+      "contact.support_label": "DIRECT SUPPORT & DISPATCH CONSOLE",
       "contact.title": "Kênh điều phối dịch vụ",
       "contact.desc":
-        "Bạn gặp khó khăn trong việc định hình gói? Kết nối trực tiếp với tổng đài viên để được thẩm định acc miễn phí.",
+        "Kết nối trực tiếp với tổng đài điều phối viên để thẩm định acc miễn phí và kích hoạt luồng chạy vàng ưu tiên ngay lập tức.",
       "order.box_title": "⚡ Trạm Khởi Tạo Đơn Nhanh",
       "order.plan_label": "Gói dịch vụ đã chọn",
       "order.server_label": "Server / Máy chủ (S1 - S81)",
@@ -124,50 +134,60 @@ document.addEventListener("DOMContentLoaded", () => {
       "qr.subtitle":
         "Quét mã QR bằng ứng dụng Ngân hàng hoặc Ví điện tử bất kỳ để thanh toán chính xác tuyệt đối.",
       "qr.copy": "Sao chép",
-      "footer.copy": "© 2026 NarutoGold Agency. All Rights Reserved.",
+      "footer.copy":
+        "© 2026 NarutoGold Enterprise (10M+ Users Ecosystem). All Rights Reserved.",
     },
     en: {
-      "topbar.status": "SERVER STATUS: ONLINE (S1 - S81) • PRIORITY QUEUE OPEN",
+      "topbar.status":
+        "ENTERPRISE NETWORK: 81/81 CLUSTERS (S1 - S81) ONLINE • 10M+ USERS",
       "topbar.requirement": "Requirement: Minimum 5 - 10 Embryos (Phôi 450)",
       "nav.services": "SERVICES",
       "nav.pricing": "PRICING",
       "nav.showcase": "RESULTS",
       "nav.contact": "CONTACT",
       "cta.order": "ORDER NOW",
-      "cta.contact": "Contact on Zalo",
-      "cta.view_pricing": "View pricing",
-      "hero.eyebrow": "SECURE STANDARD 2026",
-      "hero.title": "Fast, secure <span>Naruto Online MMORPG</span>",
+      "cta.contact": "Connect on Zalo",
+      "cta.view_pricing": "Gold Simulator & Pricing",
+      "hero.eyebrow": "10,000,000+ GAMERS ECOSYSTEM • 2026 ENTERPRISE STANDARD",
+      "hero.title": "Gold & Power Empire for <span>Naruto Online MMORPG</span>",
       "hero.desc":
-        "Gold farming solution, optimize combat power across Servers S1 - S81. Challenger team online 24/7, guaranteed absolute account safety.",
-      "hero.highlights.operational": "Operational",
+        "Automated infrastructure & 24/7 challenger team covering all servers <strong>S1 – S81</strong>. Dual isolated VPN security, 100% account insurance.",
+      "hero.highlights.operational": "User Ecosystem",
       "hero.highlights.insurance": "Account Insured",
-      "hero.highlights.response": "Responses",
-      "hero.badge": "Verified Pro Tier",
-      "hero.card.title": "Top Tier Service",
+      "hero.highlights.response": "All Servers Covered",
+      "hero.badge": "ENTERPRISE PRO TIER",
+      "hero.card.title": "NHDINH Core Engine™",
       "hero.card.desc":
-        "Optimized order flow with dual SSL encryption, delivered right on schedule.",
-      "stats.completed": "Completed",
-      "stats.rating": "Rating (1.2k reviews)",
-      "trust.delivered": "Accounts delivered",
-      "trust.safety": "Absolute safety rate",
-      "trust.avg_time": "Average handling time",
-      "trust.compensation": "200% compensation on violation",
-      "services.tag": "SERVICE STANDARDS",
-      "services.title": "Clear process and optimal security.",
+        "High-throughput order dispatch engine with dual 256-bit SSL encryption, delivered right on schedule.",
+      "stats.completed": "Trusted Users",
+      "stats.rating": "5.0★ (98.5k reviews)",
+      "trust.delivered": "Community & Reach",
+      "trust.gold_total": "Total Gold Delivered",
+      "trust.safety": "Account Safety Rate",
+      "trust.compensation": "Compensation on violation",
+      "services.tag": "ENTERPRISE SERVICE INFRASTRUCTURE",
+      "services.title": "Corporate-grade process & maximum security.",
+      "services.subtitle":
+        "Operating on isolated dispatch queues across all 81 servers, delivering 3x faster than standard services.",
       "services.feature1.title": "Absolute safety",
       "services.feature1.desc":
-        "Isolated processing flows, account security and step-by-step transparency.",
+        "Each account is assigned a dedicated geo-matched VPN IP. Total protection for your items and privacy.",
       "services.feature2.title": "Optimized speed",
       "services.feature2.desc":
-        "Fast, on-time delivery with timely 24/7 human support.",
+        "Automated booster allocation upon confirmation, completing orders in 2h – 15h with live updates.",
       "services.feature3.title": "Diverse service packages",
       "services.feature3.desc":
-        "Includes Basic, Recommended and Advanced tiers to match your goals.",
-      "pricing.plans_label": "PRICING PLANS",
-      "pricing.title": "Listed prices",
+        "From rapid Starter packs to 15,000,000 Gold GOD TIER supervised 1-on-1 by CEO nhdinh.",
+      "cluster.title": "Real-time 81 Servers (S1 – S81) Telemetry",
+      "cluster.sub":
+        "Click your Server Cluster to jump directly to the Order Console",
+      "pricing.plans_label": "PRICING & GOLD SIMULATOR",
+      "pricing.title": "Official 2026 Listed Prices",
       "pricing.note":
-        "Note: Include Server (S1 - S81), target, request details, and game account info.",
+        "Uniformly applied across Servers S1 – S81. On-time guarantee and 100% account insurance.",
+      "sim.title": "Instant Gold & Cost Simulator",
+      "sim.desc":
+        "Slide to simulate your budget based on our standard rate: <strong>400,000 cá = 1,200,000 Gold</strong>.",
       "pricing.basic.name": "Basic",
       "pricing.basic.select": "Select plan",
       "pricing.basic.feature1": "Guaranteed 400,000 Gold",
@@ -191,14 +211,14 @@ document.addEventListener("DOMContentLoaded", () => {
       "pricing.advanced.feature3": "Top perks & priority",
       "pricing.advanced.feature4": "1-on-1 direct support by nhdinh",
       "pricing.advanced.response": "Response time: 24/7, within 35 minutes",
-      "showcase.tag": "VERIFIED SHOWCASE",
+      "showcase.tag": "VERIFIED INSPECTION REPORTS",
       "showcase.title": "Results after gold farming",
       "showcase.subtitle":
-        "Click on any image to inspect our pre-handover verification checklist.",
-      "contact.support_label": "DIRECT SUPPORT & DISPATCH",
+        "Click on any image to inspect our high-resolution pre-handover verification checklist.",
+      "contact.support_label": "DIRECT SUPPORT & DISPATCH CONSOLE",
       "contact.title": "Service coordination",
       "contact.desc":
-        "Need help choosing a package? Connect directly with an agent for a free account assessment.",
+        "Connect directly with our dispatchers for a free account assessment and instant VIP queue activation.",
       "order.box_title": "⚡ Quick Order Dispatch",
       "order.plan_label": "Selected Package",
       "order.server_label": "Server ID (S1 - S81)",
@@ -210,12 +230,13 @@ document.addEventListener("DOMContentLoaded", () => {
       "qr.subtitle":
         "Scan with any Banking App or E-Wallet for instant and accurate payment.",
       "qr.copy": "Copy",
-      "footer.copy": "© 2026 NarutoGold Agency. All Rights Reserved.",
+      "footer.copy":
+        "© 2026 NarutoGold Enterprise (10M+ Users Ecosystem). All Rights Reserved.",
     },
   };
 
   const prefersReducedMotion = globalThis.matchMedia(
-    "(prefers-reduced-motion: reduce)",
+    "(prefers-reduced-motion: reduce)"
   ).matches;
 
   function showToast(message) {
@@ -340,13 +361,13 @@ document.addEventListener("DOMContentLoaded", () => {
               navLinks.forEach((link) => {
                 link.classList.toggle(
                   "is-active",
-                  link.getAttribute("href") === `#${id}`,
+                  link.getAttribute("href") === `#${id}`
                 );
               });
             }
           });
         },
-        { rootMargin: "-35% 0px -55% 0px" },
+        { rootMargin: "-35% 0px -55% 0px" }
       );
 
       sections.forEach((sec) => spyObserver.observe(sec));
@@ -369,6 +390,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function initSpotlightAndTilt() {
     if (prefersReducedMotion) return;
+
+    const cursorAura = document.getElementById("cursor-aura");
+    window.addEventListener(
+      "mousemove",
+      (e) => {
+        if (cursorAura) {
+          cursorAura.style.transform = `translate(${e.clientX - 275}px, ${e.clientY - 275}px)`;
+        }
+      },
+      { passive: true }
+    );
 
     const spotlightCards = document.querySelectorAll(".spotlight-card");
     spotlightCards.forEach((card) => {
@@ -406,8 +438,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const rect = tiltCard.getBoundingClientRect();
         const x = (e.clientX - rect.left) / rect.width - 0.5;
         const y = (e.clientY - rect.top) / rect.height - 0.5;
-        targetX = x * 10;
-        targetY = -y * 10;
+        targetX = x * 11;
+        targetY = -y * 11;
         if (!rafId) rafId = requestAnimationFrame(updateTilt);
       });
 
@@ -419,6 +451,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Mạng lưới hạt Chakra kết nối tia năng lượng tương tác với chuột
   function initChakraParticles() {
     const canvas = document.getElementById("chakra-canvas");
     if (!canvas || prefersReducedMotion) return;
@@ -427,14 +460,25 @@ document.addEventListener("DOMContentLoaded", () => {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    const particles = Array.from({ length: 34 }, () => ({
+    const mouse = { x: -9999, y: -9999 };
+    window.addEventListener(
+      "mousemove",
+      (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      },
+      { passive: true }
+    );
+
+    const count = window.innerWidth < 768 ? 28 : 58;
+    const particles = Array.from({ length: count }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      r: Math.random() * 2.2 + 0.8,
-      vy: -(Math.random() * 0.45 + 0.15),
-      vx: (Math.random() - 0.5) * 0.3,
-      alpha: Math.random() * 0.55 + 0.2,
-      color: Math.random() > 0.3 ? "#ff6a00" : "#00e5ff",
+      r: Math.random() * 2.4 + 1,
+      vy: -(Math.random() * 0.5 + 0.18),
+      vx: (Math.random() - 0.5) * 0.45,
+      alpha: Math.random() * 0.6 + 0.25,
+      color: Math.random() > 0.32 ? "#ff6a00" : "#00e5ff",
     }));
 
     window.addEventListener("resize", () => {
@@ -444,22 +488,127 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function render() {
       ctx.clearRect(0, 0, width, height);
-      for (const p of particles) {
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
         p.x += p.vx;
         p.y += p.vy;
+
         if (p.y < -10) {
           p.y = height + 10;
           p.x = Math.random() * width;
         }
+        if (p.x < -10) p.x = width + 10;
+        if (p.x > width + 10) p.x = -10;
+
+        // Tương tác lực đẩy nhẹ khi di chuột lại gần
+        const dxMouse = p.x - mouse.x;
+        const dyMouse = p.y - mouse.y;
+        const distMouse = Math.hypot(dxMouse, dyMouse);
+        if (distMouse < 130 && distMouse > 0) {
+          p.x += (dxMouse / distMouse) * 1.2;
+          p.y += (dyMouse / distMouse) * 1.2;
+        }
+
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = p.color;
         ctx.globalAlpha = p.alpha;
         ctx.fill();
+
+        // Vẽ tia liên kết năng lượng giữa các hạt gần nhau
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+          if (dist < 115) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = p.color;
+            ctx.globalAlpha = (1 - dist / 115) * 0.16;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
       }
       requestAnimationFrame(render);
     }
     render();
+  }
+
+  function initLiveTelemetryMetrics() {
+    const ccuEl = document.getElementById("live-ccu");
+    const pingEl = document.getElementById("live-ping");
+
+    setInterval(() => {
+      if (ccuEl) {
+        const base = 14800 + Math.floor(Math.random() * 190);
+        ccuEl.textContent = base.toLocaleString("vi-VN");
+      }
+      if (pingEl) {
+        const ping = 10 + Math.floor(Math.random() * 5);
+        pingEl.textContent = `${ping}ms`;
+      }
+    }, 3500);
+  }
+
+  function initGoldSimulator() {
+    const rangeInput = document.getElementById("sim-range");
+    const budgetDisplay = document.getElementById("sim-budget-display");
+    const goldOutput = document.getElementById("sim-gold-output");
+    const reqOutput = document.getElementById("sim-req-output");
+    const timeOutput = document.getElementById("sim-time-output");
+    const applyBtn = document.getElementById("sim-apply-btn");
+    const selectInput = document.getElementById("selected-plan-input");
+
+    if (!rangeInput) return;
+
+    const updateSimulator = () => {
+      const budget = Number(rangeInput.value);
+      budgetDisplay.textContent = `${budget.toLocaleString("vi-VN")} cá`;
+
+      let gold = 0;
+      let req = "5 - 10 phôi 450";
+      let time = "10 - 15 giờ (Luồng ưu tiên)";
+
+      if (budget <= 200000) {
+        gold = 400000;
+        req = "Ưu tiên 10 phôi 450";
+        time = "2 - 3 giờ (Siêu tốc)";
+      } else if (budget >= 4000000) {
+        gold = 15000000;
+        req = "Tối thiểu 20 ám 450";
+        time = "Hỗ trợ 1-1 trực tiếp bởi nhdinh";
+      } else {
+        // Chuẩn 400.000 cá = 1.200.000 Vàng (1 cá = 3 Vàng)
+        gold = budget * 3;
+      }
+
+      goldOutput.textContent = `${gold.toLocaleString("vi-VN")} Vàng`;
+      reqOutput.textContent = req;
+      timeOutput.textContent = time;
+    };
+
+    rangeInput.addEventListener("input", updateSimulator);
+    updateSimulator();
+
+    applyBtn?.addEventListener("click", () => {
+      const budget = Number(rangeInput.value);
+      if (selectInput) {
+        if (budget <= 200000) {
+          selectInput.value = "GÓI CƠ BẢN (200.000 cá - 400.000 Vàng)";
+        } else if (budget >= 4000000) {
+          selectInput.value =
+            "GÓI NÂNG CAO GOD TIER (4.000.000 cá - 15.000.000 Vàng)";
+        } else {
+          selectInput.value = "GÓI KHUYÊN DÙNG (400.000 cá - 1.200.000 Vàng)";
+        }
+        selectInput.dispatchEvent(new Event("change"));
+      }
+      showToast(
+        `Đã áp dụng mức ${budget.toLocaleString("vi-VN")} cá vào Trạm Đặt Đơn!`
+      );
+    });
   }
 
   function initRevealEffects() {
@@ -480,7 +629,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
     );
 
     animatedElements.forEach((el) => observer.observe(el));
@@ -504,7 +653,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
       },
-      { threshold: 0.35 },
+      { threshold: 0.35 }
     );
 
     counters.forEach((counter) => observer.observe(counter));
@@ -595,6 +744,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function initPlanSelectorAndOrder() {
     const planButtons = document.querySelectorAll(".btn-select-plan");
+    const clusterNodes = document.querySelectorAll(".cluster-node");
     const quickOrderBox = document.getElementById("quick-order-box");
     const selectInput = document.getElementById("selected-plan-input");
     const serverInput = document.getElementById("server-input");
@@ -655,6 +805,20 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
+    clusterNodes.forEach((node) => {
+      node.addEventListener("click", () => {
+        const srv = node.dataset.selectServer || "S62";
+        if (serverInput) {
+          serverInput.value = srv;
+          updateLivePreview();
+        }
+        document
+          .getElementById("contact")
+          ?.scrollIntoView({ behavior: "smooth" });
+        showToast(`Đã chọn cụm máy chủ ${srv}!`);
+      });
+    });
+
     planButtons.forEach((btn) => {
       btn.addEventListener("click", () => {
         const chosenPlan = btn.dataset.plan;
@@ -685,7 +849,7 @@ document.addEventListener("DOMContentLoaded", () => {
         window.open(
           "https://zalo.me/0389307257",
           "_blank",
-          "noopener,noreferrer",
+          "noopener,noreferrer"
         );
       }, 650);
     });
@@ -740,7 +904,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!ticker || !titleEl || !descEl) return;
 
-    // 100% các Server nằm trong dải S1 -> S81 theo đúng thực tế game hiện tại
     const events = [
       {
         title: "Khách hàng Server S62 • Vừa xong",
@@ -861,6 +1024,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeaderScrollAndSpy();
   initSpotlightAndTilt();
   initChakraParticles();
+  initLiveTelemetryMetrics();
+  initGoldSimulator();
   initRevealEffects();
   initCounters();
   initShowcaseModal();

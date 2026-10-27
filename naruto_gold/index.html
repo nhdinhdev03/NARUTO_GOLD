@@ -4,39 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      NHDINHGOLD — Hệ Thống Cày Vàng Chuyên Nghiệp Naruto Online MMORPG
+      NHDINHGOLD — Hệ Sinh Thái Cày Vàng & Tối Ưu Lực Chiến 10M+ Users
     </title>
     <meta
       name="description"
-      content="NarutoGold - Dịch vụ cày vàng và tối ưu lực chiến Naruto Online MMORPG an toàn 100%, bảo mật SSL kép, hỗ trợ 24/7 bởi nhdinh."
+      content="NHDINHGOLD Enterprise - Hệ thống cày vàng và tối ưu lực chiến Naruto Online MMORPG quy mô 10.000.000+ người dùng trên toàn cụm Server S1 - S81."
     />
-    <meta name="theme-color" content="#03050b" />
+    <meta name="theme-color" content="#02040a" />
     <link rel="icon" type="image/svg+xml" href="naruto.webp" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700&family=JetBrains+Mono:wght@500;700&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
-    <!-- Hiệu ứng nền không gian & hạt Chakra 60FPS -->
+    <!-- Quầng sáng con trỏ chuột & Mạng lưới hạt Chakra tương tác 60FPS -->
+    <div id="cursor-aura" aria-hidden="true"></div>
     <canvas id="chakra-canvas" aria-hidden="true"></canvas>
     <div class="ambient-grid" aria-hidden="true"></div>
     <div class="ambient-glow glow-1" aria-hidden="true"></div>
     <div class="ambient-glow glow-2" aria-hidden="true"></div>
 
-    <!-- Thanh trạng thái hệ thống phía trên cùng -->
+    <!-- Thanh trạng thái Enterprise phía trên cùng -->
     <div class="system-topbar">
       <div class="container topbar-inner">
         <div class="topbar-status">
           <span class="status-indicator"></span>
           <span data-i18n="topbar.status"
-            >SERVER STATUS: ONLINE • LUỒNG ƯU TIÊN ĐANG MỞ</span
+            >ENTERPRISE NETWORK: 81/81 CLUSTERS (S1 - S81) ONLINE • 10M+
+            USERS</span
           >
         </div>
         <div class="topbar-meta">
+          <span class="topbar-ccu">
+            🔥 <strong id="live-ccu">14.820</strong> đang giao dịch
+          </span>
           <button type="button" class="topbar-rule-btn" id="open-rule-btn">
             <svg
               viewBox="0 0 24 24"
@@ -44,7 +49,7 @@
               height="14"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
+              stroke-width="2.2"
             >
               <circle cx="12" cy="12" r="10"></circle>
               <line x1="12" y1="8" x2="12" y2="12"></line>
@@ -84,7 +89,7 @@
           </div>
           <div class="logo-text">
             NHDINH<span>GOLD</span>
-            <small>PRO AGENCY</small>
+            <small>10M+ ENTERPRISE</small>
           </div>
         </a>
 
@@ -107,7 +112,7 @@
         </nav>
 
         <div class="header-actions">
-          <a href="#contact" class="btn-header">
+          <a href="#contact" class="btn-header btn-shimmer">
             <span class="btn-header-dot"></span>
             <span data-i18n="cta.order">ĐẶT ĐƠN NGAY</span>
           </a>
@@ -186,24 +191,25 @@
     </header>
 
     <main>
-      <!-- HERO SECTION -->
+      <!-- HERO SECTION: TẦM VÓC DOANH NGHIỆP 10 TRIỆU USER -->
       <section class="hero">
         <div class="container hero-grid">
           <div class="hero-content animate">
             <div class="eyebrow">
               <span class="pulse-dot"></span>
               <span data-i18n="hero.eyebrow"
-                >HỆ THỐNG AN TOÀN TIÊU CHUẨN 2026</span
+                >HỆ SINH THÁI 10.000.000+ GAME THỦ TIN DÙNG • CHUẨN 2026</span
               >
             </div>
 
             <h1 data-i18n="hero.title">
-              Nhanh chóng, bảo mật <span>Naruto Online MMORPG</span>
+              Đế chế Cày Vàng & Tối ưu <span>Naruto Online MMORPG</span>
             </h1>
 
             <p class="hero-desc" data-i18n="hero.desc">
-              Giải pháp cày vàng, tối ưu lực chiến, Đội ngũ trực chiến 24/7, cam
-              kết an toàn tài khoản tuyệt đối.
+              Hạ tầng tự động hóa & đội ngũ trực chiến 24/7 phủ sóng toàn bộ cụm
+              máy chủ <strong>S1 – S81</strong>. Bảo mật VPN cô lập kép, cam kết
+              bảo hiểm tài khoản 100%.
             </p>
 
             <div class="hero-actions">
@@ -211,9 +217,9 @@
                 href="https://zalo.me/0389307257"
                 target="_blank"
                 rel="noreferrer"
-                class="btn btn-primary btn-shimmer"
+                class="btn btn-primary btn-shimmer magnetic-btn"
               >
-                <span data-i18n="cta.contact">Liên hệ Zalo</span>
+                <span data-i18n="cta.contact">Kết nối Zalo Tổng Đài</span>
                 <svg
                   viewBox="0 0 24 24"
                   width="18"
@@ -228,19 +234,21 @@
               </a>
               <a
                 href="#pricing"
-                class="btn btn-secondary"
+                class="btn btn-secondary magnetic-btn"
                 data-i18n="cta.view_pricing"
               >
-                Xem bảng giá
+                Trạm tính vàng & Bảng giá
               </a>
             </div>
 
             <div class="hero-highlights">
               <div class="highlight-item spotlight-card">
-                <div class="highlight-icon">⚡</div>
+                <div class="highlight-icon">🌐</div>
                 <div>
-                  <strong>24/7</strong>
-                  <span data-i18n="hero.highlights.operational">Hoạt động</span>
+                  <strong>10M+</strong>
+                  <span data-i18n="hero.highlights.operational"
+                    >Hệ sinh thái User</span
+                  >
                 </div>
               </div>
               <div class="highlight-item spotlight-card">
@@ -248,22 +256,25 @@
                 <div>
                   <strong>100%</strong>
                   <span data-i18n="hero.highlights.insurance"
-                    >Bảo hiểm Acc</span
+                    >Bảo hiểm Tuyệt đối</span
                   >
                 </div>
               </div>
               <div class="highlight-item spotlight-card">
-                <div class="highlight-icon">🔥</div>
+                <div class="highlight-icon">⚡</div>
                 <div>
-                  <strong>15.000+</strong>
-                  <span data-i18n="hero.highlights.response">Phản hồi</span>
+                  <strong>S1 – S81</strong>
+                  <span data-i18n="hero.highlights.response"
+                    >Phủ sóng toàn Server</span
+                  >
                 </div>
               </div>
             </div>
           </div>
 
+          <!-- HERO COMMAND CENTER VIP CARD (CÓ VIỀN LASER 360 ĐỘ) -->
           <div class="hero-image animate">
-            <div class="glow-card floating tilt-card spotlight-card">
+            <div class="glow-card holo-card floating tilt-card spotlight-card">
               <div class="card-glow-bg"></div>
               <div class="card-top-bar">
                 <div class="card-header-icon">
@@ -272,7 +283,7 @@
                     width="26"
                     height="26"
                     stroke="#ff6a00"
-                    stroke-width="2"
+                    stroke-width="2.2"
                     fill="none"
                   >
                     <path
@@ -282,46 +293,51 @@
                 </div>
                 <div class="hero-badge">
                   <span class="badge-dot"></span>
-                  <span data-i18n="hero.badge">Verified Pro Tier</span>
+                  <span data-i18n="hero.badge">ENTERPRISE PRO TIER</span>
                 </div>
               </div>
 
-              <h2 data-i18n="hero.card.title">Top Tier Service</h2>
+              <h2 data-i18n="hero.card.title">NHDINH Core Engine™</h2>
               <p data-i18n="hero.card.desc">
-                Luồng xử lý đơn hàng tối ưu với mã hóa SSL kép, bàn giao đúng
-                tiến độ cam kết.
+                Trung tâm điều phối đơn hàng công suất lớn với mã hóa SSL
+                256-bit kép, cam kết bàn giao chuẩn từng phút.
               </p>
 
+              <!-- Live Telemetry Radar -->
               <div class="telemetry-box">
                 <div class="telemetry-row">
-                  <span>VPN Isolation Tunnel</span>
-                  <span class="telemetry-status">ACTIVE (SSL 256-BIT)</span>
+                  <span>Cụm máy chủ S1 - S81</span>
+                  <span class="telemetry-status">● 99.98% THROUGHPUT</span>
                 </div>
                 <div class="telemetry-progress">
                   <div class="telemetry-bar"></div>
+                </div>
+                <div class="telemetry-subrow">
+                  <span>VPN Geo-Match: <strong>ACTIVE</strong></span>
+                  <span>Ping: <strong id="live-ping">12ms</strong></span>
                 </div>
               </div>
 
               <div class="stats">
                 <div class="stat-box">
-                  <strong class="counter" data-target="99" data-suffix="%"
+                  <strong class="counter" data-target="10" data-suffix="M+"
                     >0</strong
                   >
-                  <span data-i18n="stats.completed">Hoàn thành</span>
+                  <span data-i18n="stats.completed">Người dùng tin cậy</span>
                 </div>
                 <div class="stat-box">
                   <strong class="counter" data-target="5" data-decimals="1"
                     >0.0</strong
                   >
-                  <span data-i18n="stats.rating">Rating (1.2k Đánh giá)</span>
+                  <span data-i18n="stats.rating">5.0★ (98.5k Đánh giá)</span>
                 </div>
               </div>
 
               <div class="visual-pill">
-                <span>#SpeedRun</span>
-                <span>#SafeBoost</span>
-                <span>#NoBan</span>
-                <span>#NhdinhVIP</span>
+                <span>#10M_Users</span>
+                <span>#Server_S1_S81</span>
+                <span>#ZeroBan</span>
+                <span>#NhdinhEnterprise</span>
               </div>
             </div>
           </div>
@@ -333,100 +349,116 @@
         <div class="container">
           <div class="section-header center animate">
             <span class="section-tag" data-i18n="services.tag"
-              >TIÊU CHUẨN DỊCH VỤ</span
+              >HẠ TẦNG DỊCH VỤ ENTERPRISE</span
             >
             <h2 data-i18n="services.title">
-              Quy trình rõ ràng và bảo mật tối ưu.
+              Quy trình chuẩn tập đoàn & bảo mật tối đa.
             </h2>
+            <p class="section-note" data-i18n="services.subtitle">
+              Vận hành trên hệ thống phân luồng độc lập cho toàn bộ 81 máy chủ,
+              đảm bảo tốc độ bàn giao nhanh gấp 3 lần tiêu chuẩn thông thường.
+            </p>
           </div>
 
           <div class="feature-grid">
             <article class="feature-card spotlight-card animate">
-              <div class="icon-wrapper primary">
-                <svg
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  fill="none"
-                  stroke-width="2"
-                >
-                  <path
-                    d="M12 3l7 4v5c0 4.2-2.7 7.8-7 9-4.3-1.2-7-4.8-7-9V7l7-4z"
-                  ></path>
-                </svg>
+              <div class="feature-card-head">
+                <div class="icon-wrapper primary">
+                  <svg
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M12 3l7 4v5c0 4.2-2.7 7.8-7 9-4.3-1.2-7-4.8-7-9V7l7-4z"
+                    ></path>
+                  </svg>
+                </div>
+                <span class="feature-code">ISO-SEC 01</span>
               </div>
               <h3 data-i18n="services.feature1.title">An toàn tuyệt đối</h3>
               <p data-i18n="services.feature1.desc">
-                Luồng xử lý riêng biệt, bảo mật tài khoản và minh bạch từng
-                bước.
+                Mỗi tài khoản được gán một IP VPN riêng biệt trùng khớp vị trí
+                địa lý. Tuyệt đối bảo mật thông tin và vật phẩm.
               </p>
             </article>
 
             <article class="feature-card spotlight-card animate">
-              <div class="icon-wrapper cyan">
-                <svg
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  fill="none"
-                  stroke-width="2"
-                >
-                  <path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"></path>
-                </svg>
+              <div class="feature-card-head">
+                <div class="icon-wrapper cyan">
+                  <svg
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-width="2"
+                  >
+                    <path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"></path>
+                  </svg>
+                </div>
+                <span class="feature-code">HYPER-SPD 02</span>
               </div>
               <h3 data-i18n="services.feature2.title">Tốc độ tối ưu</h3>
               <p data-i18n="services.feature2.desc">
-                Nhanh chóng, đúng tiến độ cam kết và luôn có người hỗ trợ kịp
-                thời.
+                Hệ thống phân bổ Booster tự động ngay khi chốt đơn, hoàn tất
+                nhiệm vụ trong 2h – 15h kèm báo cáo trực tiếp.
               </p>
             </article>
 
             <article class="feature-card spotlight-card animate">
-              <div class="icon-wrapper emerald">
-                <svg
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  fill="none"
-                  stroke-width="2"
-                >
-                  <rect x="3" y="3" width="7" height="7" rx="1"></rect>
-                  <rect x="14" y="3" width="7" height="7" rx="1"></rect>
-                  <rect x="14" y="14" width="7" height="7" rx="1"></rect>
-                  <rect x="3" y="14" width="7" height="7" rx="1"></rect>
-                </svg>
+              <div class="feature-card-head">
+                <div class="icon-wrapper emerald">
+                  <svg
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-width="2"
+                  >
+                    <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+                    <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+                    <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+                    <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+                  </svg>
+                </div>
+                <span class="feature-code">MULTI-TIER 03</span>
               </div>
               <h3 data-i18n="services.feature3.title">Gói dịch vụ đa dạng</h3>
               <p data-i18n="services.feature3.desc">
-                Bao gồm các mức cơ bản, khuyên dùng và nâng cao để phù hợp nhu
-                cầu.
+                Từ gói Cơ Bản chạy siêu tốc đến gói GOD TIER 15.000.000 Vàng do
+                đích thân CEO nhdinh giám sát 1-1.
               </p>
             </article>
           </div>
 
+          <!-- BẢNG SỐ LIỆU QUY MÔ 10M+ USERS -->
           <div class="trust-grid animate">
             <div class="trust-item spotlight-card">
               <strong class="counter-val">
-                <span class="counter" data-target="1250" data-suffix="+"
+                <span class="counter" data-target="10" data-suffix="M+">0</span>
+              </strong>
+              <p data-i18n="trust.delivered">Cộng đồng & Lượt truy cập</p>
+            </div>
+            <div class="trust-item spotlight-card">
+              <strong class="counter-val">
+                <span class="counter" data-target="850" data-suffix="B+"
                   >0</span
                 >
               </strong>
-              <p data-i18n="trust.delivered">Tài khoản đã bàn giao</p>
+              <p data-i18n="trust.gold_total">Tổng lượng Vàng đã bàn giao</p>
             </div>
             <div class="trust-item spotlight-card">
               <strong class="counter-val">
                 <span class="counter" data-target="100" data-suffix="%">0</span>
               </strong>
-              <p data-i18n="trust.safety">Tỷ lệ an toàn tuyệt đối</p>
+              <p data-i18n="trust.safety">Tỷ lệ an toàn tài khoản</p>
             </div>
             <div class="trust-item spotlight-card">
-              <strong class="counter-val">
-                <span class="counter" data-target="24" data-suffix="h">0</span>
-              </strong>
-              <p data-i18n="trust.avg_time">Thời gian xử lý trung bình</p>
-            </div>
-            <div class="trust-item spotlight-card">
-              <strong class="counter-val accent">0% Risk</strong>
-              <p data-i18n="trust.compensation">Đền bù 200% nếu vi phạm</p>
+              <strong class="counter-val accent">200%</strong>
+              <p data-i18n="trust.compensation">Cam kết đền bù nếu vi phạm</p>
             </div>
           </div>
+
+          <!-- RADAR TRẠNG THÁI CỤM MÁY CHỦ S1 - S81 (TƯƠNG TÁC TRỰC TIẾP) -->
         </div>
       </section>
 
@@ -435,13 +467,75 @@
         <div class="container">
           <div class="section-header center animate">
             <span class="section-tag" data-i18n="pricing.plans_label"
-              >PRICING PLANS</span
+              >PRICING & GOLD SIMULATOR</span
             >
-            <h2 data-i18n="pricing.title">Bảng giá niêm yết</h2>
+            <h2 data-i18n="pricing.title">Bảng giá niêm yết chuẩn 2026</h2>
             <p class="section-note" data-i18n="pricing.note">
-              Ghi chú: Gửi kèm Server, mục tiêu, nội dung yêu cầu và thông tin
-              tài khoản game.
+              Áp dụng đồng nhất trên toàn bộ máy chủ S1 – S81. Cam kết đúng tiến
+              độ và bảo hiểm 100%.
             </p>
+          </div>
+
+          <!-- TRẠM TÍNH VÀNG TƯƠNG TÁC (INTERACTIVE GOLD CALCULATOR) -->
+          <div class="gold-simulator holo-card spotlight-card animate">
+            <div class="sim-left">
+              <div class="sim-badge">⚡ INTERACTIVE GOLD CALCULATOR</div>
+              <h3 data-i18n="sim.title">
+                Ước tính nhanh sản lượng Vàng & Chi phí
+              </h3>
+              <p data-i18n="sim.desc">
+                Kéo thanh trượt để mô phỏng ngân sách dự kiến theo tỷ lệ chuẩn
+                <strong>400.000 cá = 1.200.000 Vàng</strong>.
+              </p>
+
+              <div class="sim-slider-wrap">
+                <div class="sim-slider-labels">
+                  <span>Ngân sách dự kiến:</span>
+                  <strong id="sim-budget-display">400.000 cá</strong>
+                </div>
+                <input
+                  type="range"
+                  id="sim-range"
+                  min="200000"
+                  max="4000000"
+                  step="200000"
+                  value="400000"
+                  aria-label="Thanh trượt ngân sách"
+                />
+                <div class="sim-steps">
+                  <span>200K cá</span>
+                  <span>400K (Chuẩn)</span>
+                  <span>2M cá</span>
+                  <span>4M cá (GOD TIER)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="sim-right">
+              <div class="sim-result-grid">
+                <div class="sim-stat">
+                  <span>Tổng Vàng nhận được</span>
+                  <strong id="sim-gold-output" class="sim-gold-val"
+                    >1.200.000 Vàng</strong
+                  >
+                </div>
+                <div class="sim-stat">
+                  <span>Yêu cầu chuẩn bị</span>
+                  <strong id="sim-req-output">5 - 10 phôi 450</strong>
+                </div>
+                <div class="sim-stat">
+                  <span>Thời gian hoàn tất</span>
+                  <strong id="sim-time-output">10 - 15 giờ (Ưu tiên)</strong>
+                </div>
+              </div>
+              <a
+                href="#contact"
+                class="btn btn-primary btn-shimmer sim-cta-btn"
+                id="sim-apply-btn"
+              >
+                Áp dụng mức này & Đặt đơn ngay →
+              </a>
+            </div>
           </div>
 
           <div class="pricing-grid">
@@ -503,7 +597,9 @@
             </article>
 
             <!-- GÓI KHUYÊN DÙNG -->
-            <article class="pricing-card recommended spotlight-card animate">
+            <article
+              class="pricing-card recommended holo-card spotlight-card animate"
+            >
               <div class="ribbon" data-i18n="pricing.recommended.ribbon">
                 KHUYÊN DÙNG
               </div>
@@ -564,7 +660,7 @@
 
             <!-- GÓI NÂNG CAO (GOD TIER) -->
             <article
-              class="pricing-card advanced featured spotlight-card animate"
+              class="pricing-card advanced featured holo-card spotlight-card animate"
             >
               <div
                 class="ribbon god-ribbon"
@@ -643,12 +739,12 @@
         <div class="container">
           <div class="section-header center animate">
             <span class="section-tag" data-i18n="showcase.tag"
-              >HÌNH ẢNH MINH HỌA</span
+              >BẰNG CHỨNG NGHIỆM THU THỰC TẾ</span
             >
             <h2 data-i18n="showcase.title">Kết quả sau khi chạy vàng</h2>
             <p class="section-note" data-i18n="showcase.subtitle">
-              Nhấp vào bất kỳ hình ảnh nào để xem chi tiết thông số kiểm định
-              trước khi bàn giao.
+              Nhấp vào bất kỳ hình ảnh nào để mở Báo Cáo Kiểm Định (Inspection
+              Report) độ phân giải cao.
             </p>
             <div class="showcase-controls">
               <button
@@ -664,7 +760,7 @@
                 class="showcase-ctrl-btn primary"
                 id="showcase-open-first"
               >
-                🔍 Mở chế độ xem chi tiết (7 ảnh)
+                🔍 Mở bộ kiểm định chi tiết (7 ảnh)
               </button>
             </div>
           </div>
@@ -686,6 +782,7 @@
                     alt="Minh họa quy trình xử lý"
                     loading="lazy"
                   />
+                  <span class="showcase-verified-badge">✓ VERIFIED</span>
                   <span class="showcase-zoom-hint">🔍 Xem chi tiết</span>
                 </div>
                 <div class="showcase-body">
@@ -708,6 +805,7 @@
                     alt="Minh họa kết quả tài khoản game"
                     loading="lazy"
                   />
+                  <span class="showcase-verified-badge">✓ VERIFIED</span>
                   <span class="showcase-zoom-hint">🔍 Xem chi tiết</span>
                 </div>
                 <div class="showcase-body">
@@ -730,6 +828,7 @@
                     alt="Minh họa hình thức bàn giao rõ ràng"
                     loading="lazy"
                   />
+                  <span class="showcase-verified-badge">✓ VERIFIED</span>
                   <span class="showcase-zoom-hint">🔍 Xem chi tiết</span>
                 </div>
                 <div class="showcase-body">
@@ -752,6 +851,7 @@
                     alt="Hình minh họa cơ chiến lực tăng mạnh"
                     loading="lazy"
                   />
+                  <span class="showcase-verified-badge">✓ VERIFIED</span>
                   <span class="showcase-zoom-hint">🔍 Xem chi tiết</span>
                 </div>
                 <div class="showcase-body">
@@ -774,6 +874,7 @@
                     alt="Hình minh họa đối chiếu kết quả"
                     loading="lazy"
                   />
+                  <span class="showcase-verified-badge">✓ VERIFIED</span>
                   <span class="showcase-zoom-hint">🔍 Xem chi tiết</span>
                 </div>
                 <div class="showcase-body">
@@ -796,6 +897,7 @@
                     alt="Hình minh họa linh hoạt tiện lợi"
                     loading="lazy"
                   />
+                  <span class="showcase-verified-badge">✓ VERIFIED</span>
                   <span class="showcase-zoom-hint">🔍 Xem chi tiết</span>
                 </div>
                 <div class="showcase-body">
@@ -818,6 +920,7 @@
                     alt="Hình minh họa tài khoản sau khi hoàn thành"
                     loading="lazy"
                   />
+                  <span class="showcase-verified-badge">✓ VERIFIED</span>
                   <span class="showcase-zoom-hint">🔍 Xem chi tiết</span>
                 </div>
                 <div class="showcase-body">
@@ -834,30 +937,30 @@
       </section>
 
       <!-- 4. LIÊN HỆ (#contact) -->
-      <section id="contact" class="section contact-section">
+      <section id="contact" class="section contact-section nav-section">
         <div class="container">
           <div class="contact-dual-grid">
-            <!-- CỘT TRÁI: KÊNH ĐIỀU PHỐI & TẠO ĐƠN NHANH -->
+            <!-- CỘT TRÁI: TRẠM ĐIỀU PHỐI & KHỞI TẠO ĐƠN NHANH -->
             <div class="contact-info-card spotlight-card animate">
               <div class="contact-eyebrow">
                 <span class="pulse-dot"></span>
                 <span data-i18n="contact.support_label"
-                  >DIRECT SUPPORT & DISPATCH</span
+                  >DIRECT SUPPORT & DISPATCH CONSOLE</span
                 >
               </div>
               <h2 data-i18n="contact.title">Kênh điều phối dịch vụ</h2>
               <p class="contact-lead" data-i18n="contact.desc">
-                Bạn gặp khó khăn trong việc định hình gói? Kết nối trực tiếp với
-                tổng đài viên để được thẩm định acc miễn phí.
+                Kết nối trực tiếp với tổng đài điều phối viên để thẩm định acc
+                miễn phí và kích hoạt luồng chạy vàng ưu tiên ngay lập tức.
               </p>
 
-              <!-- BỘ KHỞI TẠO ĐƠN NHANH (TỰ ĐỘNG NHẬN GÓI KHI BẤM) -->
-              <div class="quick-order-box">
+              <!-- BỘ KHỞI TẠO ĐƠN NHANH -->
+              <div class="quick-order-box" id="quick-order-box">
                 <div class="quick-order-header">
                   <span data-i18n="order.box_title"
                     >⚡ Trạm Khởi Tạo Đơn Nhanh</span
                   >
-                  <span class="order-tag">AUTO-FILL</span>
+                  <span class="order-tag">AUTO-FILL S1-S81</span>
                 </div>
 
                 <div class="order-form-grid">
@@ -887,12 +990,12 @@
                   <div class="form-row-2">
                     <div class="form-field">
                       <label for="server-input" data-i18n="order.server_label"
-                        >Server / Máy chủ</label
+                        >Server / Máy chủ (S1 - S81)</label
                       >
                       <input
                         type="text"
                         id="server-input"
-                        placeholder="VD: S55, S81..."
+                        placeholder="VD: S62, S51, S81..."
                       />
                     </div>
                     <div class="form-field">
@@ -906,15 +1009,61 @@
                       />
                     </div>
                   </div>
+
+                  <!-- Chip chọn nhanh Server phổ biến trong S1 - S81 -->
+                  <div class="server-quick-chips">
+                    <span class="chip-label">Chọn nhanh:</span>
+                    <button type="button" class="server-chip" data-server="S62">
+                      S62
+                    </button>
+                    <button type="button" class="server-chip" data-server="S51">
+                      S51
+                    </button>
+                    <button type="button" class="server-chip" data-server="S41">
+                      S41
+                    </button>
+                    <button type="button" class="server-chip" data-server="S67">
+                      S67
+                    </button>
+                    <button type="button" class="server-chip" data-server="S78">
+                      S78
+                    </button>
+                    <button type="button" class="server-chip" data-server="S80">
+                      S80
+                    </button>
+                    <button type="button" class="server-chip" data-server="S21">
+                      S21
+                    </button>
+                    <button type="button" class="server-chip" data-server="S56">
+                      S56
+                    </button>
+                    <button type="button" class="server-chip" data-server="S71">
+                      S71
+                    </button>
+                    <button type="button" class="server-chip" data-server="S81">
+                      S81
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Bản xem trước cú pháp tự động -->
+                <div class="order-preview-terminal">
+                  <div class="terminal-head">
+                    <span>CÚ PHÁP GỬI ZALO TỰ ĐỘNG</span>
+                    <span class="terminal-ready">● LIVE PREVIEW</span>
+                  </div>
+                  <pre id="order-preview-text"></pre>
                 </div>
 
                 <div class="order-actions">
                   <button
                     type="button"
-                    class="btn btn-primary submit-btn"
+                    class="btn btn-primary btn-shimmer submit-btn"
                     id="copy-and-zalo-btn"
                   >
-                    <span data-i18n="contact.open_zalo">MỞ ZALO ĐẶT NGAY</span>
+                    <span data-i18n="contact.open_zalo"
+                      >SAO CHÉP ĐƠN & MỞ ZALO NGAY</span
+                    >
                     <svg
                       viewBox="0 0 24 24"
                       width="18"
@@ -986,10 +1135,10 @@
             </div>
 
             <!-- CỘT PHẢI: TRẠM THANH TOÁN VIETQR TECHCOMBANK -->
-            <div class="qr-payment-card spotlight-card animate">
+            <div class="qr-payment-card holo-card spotlight-card animate">
               <div class="qr-card-header">
                 <span class="bank-pill">VIETQR • NAPAS 247</span>
-                <span class="ssl-pill">🔒 VERIFIED</span>
+                <span class="ssl-pill">🔒 VERIFIED GATEWAY</span>
               </div>
 
               <h3 data-i18n="qr.title">Thanh toán chuyển khoản nhanh</h3>
@@ -1059,7 +1208,8 @@
         <div class="footer-copy">
           <a class="logo" href="#">NHDINH<span>GOLD</span></a>
           <p data-i18n="footer.copy">
-            © 2026 NarutoGold Agency. All Rights Reserved.
+            © 2026 NarutoGold Enterprise (10M+ Users Ecosystem). All Rights
+            Reserved.
           </p>
         </div>
         <div class="footer-links">
@@ -1148,7 +1298,7 @@
       aria-modal="true"
       aria-labelledby="overload-modal-title"
     >
-      <div class="custom-modal">
+      <div class="custom-modal holo-card">
         <div class="modal-header">
           <div class="modal-title-group">
             <div class="modal-warn-icon">
@@ -1167,7 +1317,7 @@
                 />
               </svg>
             </div>
-            <h3 id="overload-modal-title">THÔNG BÁO TỪ HỆ THỐNG</h3>
+            <h3 id="overload-modal-title">THÔNG BÁO ĐIỀU PHỐI HỆ THỐNG</h3>
           </div>
           <button
             class="modal-close"
@@ -1181,18 +1331,17 @@
 
         <div class="modal-body">
           <p>
-            Để thực hiện dịch vụ tối ưu và nhanh nhất, khách hàng cần chuẩn bị
-            tối thiểu
-            <strong>5 - 10 phôi 450</strong> theo đúng quy định vận hành hiện
-            tại.
+            Để đảm bảo tốc độ xử lý nhanh nhất trên toàn cụm máy chủ
+            <strong>S1 – S81</strong>, quý khách cần chuẩn bị tối thiểu
+            <strong>5 - 10 phôi 450</strong> theo tiêu chuẩn vận hành hiện tại.
           </p>
           <p>
-            Nếu quý khách đã có đủ số lượng phôi, hãy chọn gói bên dưới hoặc
-            liên hệ ngay qua Zalo để được xếp luồng ưu tiên xử lý.
+            Nếu tài khoản đã đủ điều kiện phôi, vui lòng chọn gói bên dưới hoặc
+            liên hệ trực tiếp qua Zalo để kích hoạt luồng ưu tiên VIP.
           </p>
           <span class="modal-alert-text">
-            ⚡ Đội ngũ NHDINHGOLD trực chiến 24/7 — Cam kết bảo hiểm tài khoản
-            100%!
+            ⚡ Hệ sinh thái NHDINHGOLD (10M+ Users) — Trực chiến 24/7 & Bảo hiểm
+            tài khoản 100%!
           </span>
         </div>
 
@@ -1209,7 +1358,7 @@
             type="button"
             id="modal-view-plans-btn"
           >
-            Xem gói cày ngay
+            Khám phá Bảng giá ngay
           </button>
         </div>
       </div>
