@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "pricing.recommended.name": "Khuyên dùng",
       "pricing.recommended.ribbon": "KHUYÊN DÙNG",
       "pricing.recommended.select": "Chọn gói này",
-      "pricing.recommended.feature1": "Cam kết 1.000.000 Vàng",
+      "pricing.recommended.feature1": "Cam kết 1.200.000 Vàng",
       "pricing.recommended.feature2": "Tối thiểu khách phải có 5 - 10 phôi 450",
       "pricing.recommended.feature3": "Bảo hiểm tài khoản 100%",
       "pricing.recommended.feature4":
@@ -707,7 +707,7 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       {
         title: "Khách hàng Server S71 • 2 phút trước",
-        desc: "Đã bàn giao xong 1.000.000 Vàng (Bảo hiểm 100%)",
+        desc: "Đã bàn giao xong 1.200.000 Vàng (Bảo hiểm 100%)",
       },
       {
         title: "Khách hàng Server S41 • 4 phút trước",
