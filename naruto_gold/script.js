@@ -39,16 +39,13 @@ function animateCounter(element) {
 document.addEventListener("DOMContentLoaded", () => {
   const translations = {
     vi: {
-      "topbar.status":
-        "ENTERPRISE NETWORK: 81/81 CLUSTERS (S1 - S81) ONLINE • 10M+ USERS",
-      "topbar.requirement": "Quy định phôi: Tối thiểu 5 - 10 phôi 450",
       "nav.services": "DỊCH VỤ",
       "nav.pricing": "BẢNG GIÁ",
       "nav.showcase": "KẾT QUẢ",
       "nav.contact": "LIÊN HỆ",
       "cta.order": "ĐẶT ĐƠN NGAY",
       "cta.contact": "Kết nối Zalo Tổng Đài",
-      "cta.view_pricing": "Trạm tính vàng & Bảng giá",
+      "cta.view_pricing": "Khám phá Bảng giá VIP",
       "hero.eyebrow":
         "HỆ SINH THÁI 10.000.000+ GAME THỦ TIN DÙNG • CHUẨN 2026",
       "hero.title":
@@ -81,16 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
       "services.feature3.title": "Gói dịch vụ đa dạng",
       "services.feature3.desc":
         "Từ gói Cơ Bản chạy siêu tốc đến gói GOD TIER 15.000.000 Vàng do đích thân CEO nhdinh giám sát 1-1.",
-      "cluster.title": "Trạng thái 81 Máy Chủ (S1 – S81) Thời Gian Thực",
-      "cluster.sub":
-        "Nhấp vào cụm Server của bạn để chuyển thẳng tới Trạm Đặt Đơn",
-      "pricing.plans_label": "PRICING & GOLD SIMULATOR",
-      "pricing.title": "Bảng giá niêm yết chuẩn 2026",
-      "pricing.note":
-        "Áp dụng đồng nhất trên toàn bộ máy chủ S1 – S81. Cam kết đúng tiến độ và bảo hiểm 100%.",
-      "sim.title": "Ước tính nhanh sản lượng Vàng & Chi phí",
-      "sim.desc":
-        "Kéo thanh trượt để mô phỏng ngân sách dự kiến theo tỷ lệ chuẩn <strong>400.000 cá = 1.200.000 Vàng</strong>.",
       "pricing.basic.name": "Cơ bản",
       "pricing.basic.select": "Chọn gói này",
       "pricing.basic.feature1": "Cam kết 400.000 Vàng",
@@ -138,16 +125,13 @@ document.addEventListener("DOMContentLoaded", () => {
         "© 2026 NarutoGold Enterprise (10M+ Users Ecosystem). All Rights Reserved.",
     },
     en: {
-      "topbar.status":
-        "ENTERPRISE NETWORK: 81/81 CLUSTERS (S1 - S81) ONLINE • 10M+ USERS",
-      "topbar.requirement": "Requirement: Minimum 5 - 10 Embryos (Phôi 450)",
       "nav.services": "SERVICES",
       "nav.pricing": "PRICING",
       "nav.showcase": "RESULTS",
       "nav.contact": "CONTACT",
       "cta.order": "ORDER NOW",
       "cta.contact": "Connect on Zalo",
-      "cta.view_pricing": "Gold Simulator & Pricing",
+      "cta.view_pricing": "Explore VIP Pricing",
       "hero.eyebrow": "10,000,000+ GAMERS ECOSYSTEM • 2026 ENTERPRISE STANDARD",
       "hero.title": "Gold & Power Empire for <span>Naruto Online MMORPG</span>",
       "hero.desc":
@@ -178,16 +162,6 @@ document.addEventListener("DOMContentLoaded", () => {
       "services.feature3.title": "Diverse service packages",
       "services.feature3.desc":
         "From rapid Starter packs to 15,000,000 Gold GOD TIER supervised 1-on-1 by CEO nhdinh.",
-      "cluster.title": "Real-time 81 Servers (S1 – S81) Telemetry",
-      "cluster.sub":
-        "Click your Server Cluster to jump directly to the Order Console",
-      "pricing.plans_label": "PRICING & GOLD SIMULATOR",
-      "pricing.title": "Official 2026 Listed Prices",
-      "pricing.note":
-        "Uniformly applied across Servers S1 – S81. On-time guarantee and 100% account insurance.",
-      "sim.title": "Instant Gold & Cost Simulator",
-      "sim.desc":
-        "Slide to simulate your budget based on our standard rate: <strong>400,000 cá = 1,200,000 Gold</strong>.",
       "pricing.basic.name": "Basic",
       "pricing.basic.select": "Select plan",
       "pricing.basic.feature1": "Guaranteed 400,000 Gold",
@@ -396,7 +370,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "mousemove",
       (e) => {
         if (cursorAura) {
-          cursorAura.style.transform = `translate(${e.clientX - 275}px, ${e.clientY - 275}px)`;
+          cursorAura.style.transform = `translate(${e.clientX - 260}px, ${e.clientY - 260}px)`;
         }
       },
       { passive: true }
@@ -451,8 +425,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Mạng lưới hạt Chakra kết nối tia năng lượng tương tác với chuột
-  function initChakraParticles() {
+  /* ==========================================================================
+     NỀN ĐỘNG 60FPS: NARUTO (RASENGAN/KURAMA) PK SASUKE (CHIDORI/SUSANOO)
+     ========================================================================== */
+  function initNarutoSasukePKBattle() {
     const canvas = document.getElementById("chakra-canvas");
     if (!canvas || prefersReducedMotion) return;
 
@@ -460,155 +436,325 @@ document.addEventListener("DOMContentLoaded", () => {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    const mouse = { x: -9999, y: -9999 };
+    const isMobile = width < 768;
+    const mouse = { x: width * 0.5, y: height * 0.45, active: false };
+
     window.addEventListener(
       "mousemove",
       (e) => {
         mouse.x = e.clientX;
         mouse.y = e.clientY;
+        mouse.active = true;
       },
       { passive: true }
     );
-
-    const count = window.innerWidth < 768 ? 28 : 58;
-    const particles = Array.from({ length: count }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      r: Math.random() * 2.4 + 1,
-      vy: -(Math.random() * 0.5 + 0.18),
-      vx: (Math.random() - 0.5) * 0.45,
-      alpha: Math.random() * 0.6 + 0.25,
-      color: Math.random() > 0.32 ? "#ff6a00" : "#00e5ff",
-    }));
 
     window.addEventListener("resize", () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
     });
 
-    function render() {
-      ctx.clearRect(0, 0, width, height);
+    // Hạt Chakra nền (Trái: Hỏa/Kurama Cam Vàng, Phải: Lôi/Susanoo Tím Xanh)
+    const particleCount = isMobile ? 36 : 75;
+    const particles = Array.from({ length: particleCount }, (_, idx) => {
+      const isNarutoSide = idx % 2 === 0;
+      return {
+        side: isNarutoSide ? "naruto" : "sasuke",
+        x: isNarutoSide
+          ? Math.random() * (width * 0.55)
+          : width * 0.45 + Math.random() * (width * 0.55),
+        y: Math.random() * height,
+        r: Math.random() * 2.5 + 1,
+        vx: isNarutoSide
+          ? Math.random() * 0.8 + 0.2
+          : -(Math.random() * 0.8 + 0.2),
+        vy: (Math.random() - 0.5) * 0.7,
+        alpha: Math.random() * 0.65 + 0.25,
+        color: isNarutoSide
+          ? Math.random() > 0.4
+            ? "#ff7700"
+            : "#ffbe00"
+          : Math.random() > 0.4
+            ? "#00e5ff"
+            : "#a855f7",
+      };
+    });
 
+    // Tia lửa văng ra từ tâm va chạm PK (Clash Sparks)
+    const sparks = [];
+    // Sóng xung kích (Shockwave Rings) khi Rasengan & Chidori va chạm
+    const shockwaves = [];
+
+    function spawnClashBurst(cx, cy, intensity = 1) {
+      const count = Math.floor((isMobile ? 10 : 22) * intensity);
+      for (let i = 0; i < count; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = (Math.random() * 5 + 2) * intensity;
+        const isNaruto = Math.random() > 0.5;
+        sparks.push({
+          x: cx,
+          y: cy,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          life: 1,
+          decay: Math.random() * 0.03 + 0.018,
+          size: Math.random() * 2.6 + 1.2,
+          color: isNaruto ? "#ffaa00" : "#00e5ff",
+        });
+      }
+
+      shockwaves.push({
+        x: cx,
+        y: cy,
+        radius: 8,
+        maxRadius: (isMobile ? 140 : 260) * intensity,
+        alpha: 0.55,
+        color: Math.random() > 0.5 ? "#ff7700" : "#00e5ff",
+      });
+    }
+
+    // Click chuột bất kỳ tạo vụ nổ PK Rasengan vs Chidori
+    window.addEventListener("click", (e) => {
+      spawnClashBurst(e.clientX, e.clientY, 1.35);
+    });
+
+    // Hàm vẽ tia sét Chidori phân nhánh
+    function drawLightningBolt(x1, y1, x2, y2, displace, color, lineWidth) {
+      if (displace < 4) {
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.strokeStyle = color;
+        ctx.lineWidth = lineWidth;
+        ctx.stroke();
+        return;
+      }
+      const midX = (x1 + x2) * 0.5 + (Math.random() - 0.5) * displace;
+      const midY = (y1 + y2) * 0.5 + (Math.random() - 0.5) * displace;
+      drawLightningBolt(x1, y1, midX, midY, displace * 0.5, color, lineWidth);
+      drawLightningBolt(midX, midY, x2, y2, displace * 0.5, color, lineWidth);
+    }
+
+    let time = 0;
+    let lastAutoClash = 0;
+
+    function render(now) {
+      time += 0.022;
+      ctx.clearRect(0, 0, width, height);
+      ctx.globalCompositeOperation = "lighter";
+
+      // Tâm giao tranh dịch chuyển linh hoạt theo nhịp PK & vị trí chuột
+      const baseCenterX = width * 0.5 + Math.sin(time * 0.7) * (width * 0.05);
+      const baseCenterY = height * 0.44 + Math.cos(time * 0.5) * (height * 0.04);
+      const clashX = mouse.active
+        ? baseCenterX * 0.78 + mouse.x * 0.22
+        : baseCenterX;
+      const clashY = mouse.active
+        ? baseCenterY * 0.78 + mouse.y * 0.22
+        : baseCenterY;
+
+      // Khoảng cách dao động khi Naruto và Sasuke lao vào PK
+      const chargeCycle = (Math.sin(time * 1.8) + 1) * 0.5; // 0 -> 1
+      const separation = (isMobile ? 28 : 65) * (0.25 + chargeCycle * 0.75);
+
+      const narutoX = clashX - separation;
+      const narutoY = clashY + Math.sin(time * 3) * 14;
+
+      const sasukeX = clashX + separation;
+      const sasukeY = clashY - Math.sin(time * 3) * 14;
+
+      // Khi 2 luồng đòn đánh áp sát nhau -> kích hoạt sóng xung kích PK
+      if (chargeCycle < 0.15 && now - lastAutoClash > 900) {
+        spawnClashBurst(clashX, clashY, 0.95);
+        lastAutoClash = now;
+      }
+
+      // 1. VẼ LUỒNG CHAKRA KURAMA & QUẢ CẦU RASENGAN XOÁY (BÊN TRÁI - NARUTO)
+      const rasenganGrad = ctx.createRadialGradient(
+        narutoX,
+        narutoY,
+        2,
+        narutoX,
+        narutoY,
+        isMobile ? 75 : 135
+      );
+      rasenganGrad.addColorStop(0, "rgba(255, 255, 220, 0.75)");
+      rasenganGrad.addColorStop(0.25, "rgba(255, 165, 0, 0.42)");
+      rasenganGrad.addColorStop(0.6, "rgba(255, 69, 0, 0.14)");
+      rasenganGrad.addColorStop(1, "rgba(255, 69, 0, 0)");
+
+      ctx.fillStyle = rasenganGrad;
+      ctx.beginPath();
+      ctx.arc(narutoX, narutoY, isMobile ? 75 : 135, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Vòng xoáy Rasengan xoay tốc độ cao
+      for (let ring = 0; ring < 3; ring++) {
+        ctx.save();
+        ctx.translate(narutoX, narutoY);
+        ctx.rotate(time * (4 + ring * 1.5));
+        ctx.beginPath();
+        const radius = (isMobile ? 18 : 28) + ring * 12;
+        ctx.arc(0, 0, radius, 0, Math.PI * 1.35);
+        ctx.strokeStyle =
+          ring === 0 ? "rgba(255, 230, 128, 0.65)" : "rgba(255, 115, 0, 0.38)";
+        ctx.lineWidth = 2 - ring * 0.4;
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      // 2. VẼ LUỒNG LÔI ĐIỆN CHIDORI & SUSANOO (BÊN PHẢI - SASUKE)
+      const chidoriGrad = ctx.createRadialGradient(
+        sasukeX,
+        sasukeY,
+        2,
+        sasukeX,
+        sasukeY,
+        isMobile ? 75 : 135
+      );
+      chidoriGrad.addColorStop(0, "rgba(235, 252, 255, 0.8)");
+      chidoriGrad.addColorStop(0.28, "rgba(0, 229, 255, 0.42)");
+      chidoriGrad.addColorStop(0.65, "rgba(157, 78, 221, 0.16)");
+      chidoriGrad.addColorStop(1, "rgba(157, 78, 221, 0)");
+
+      ctx.fillStyle = chidoriGrad;
+      ctx.beginPath();
+      ctx.arc(sasukeX, sasukeY, isMobile ? 75 : 135, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Tia sét Chidori phóng quanh tâm Sasuke và giật vào điểm va chạm
+      const boltCount = isMobile ? 2 : 4;
+      for (let b = 0; b < boltCount; b++) {
+        const angle = Math.random() * Math.PI * 2;
+        const dist = (isMobile ? 45 : 95) * (0.5 + Math.random() * 0.7);
+        const targetX = sasukeX + Math.cos(angle) * dist;
+        const targetY = sasukeY + Math.sin(angle) * dist;
+        drawLightningBolt(
+          sasukeX,
+          sasukeY,
+          targetX,
+          targetY,
+          22,
+          b % 2 === 0 ? "rgba(0, 229, 255, 0.65)" : "rgba(185, 103, 255, 0.55)",
+          1.3
+        );
+      }
+
+      // 3. TÂM VA CHẠM TRỰC DIỆN (CLASH NEXUS GIỮA NARUTO & SASUKE)
+      drawLightningBolt(
+        narutoX,
+        narutoY,
+        sasukeX,
+        sasukeY,
+        26,
+        "rgba(255, 210, 120, 0.7)",
+        1.8
+      );
+      drawLightningBolt(
+        sasukeX,
+        sasukeY,
+        narutoX,
+        narutoY,
+        26,
+        "rgba(0, 229, 255, 0.7)",
+        1.8
+      );
+
+      // Vòng hào quang điểm giao chiến trung tâm
+      const nexusGrad = ctx.createRadialGradient(
+        clashX,
+        clashY,
+        1,
+        clashX,
+        clashY,
+        isMobile ? 45 : 80
+      );
+      nexusGrad.addColorStop(0, "rgba(255, 255, 255, 0.65)");
+      nexusGrad.addColorStop(0.4, "rgba(255, 140, 0, 0.25)");
+      nexusGrad.addColorStop(0.7, "rgba(0, 229, 255, 0.2)");
+      nexusGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
+      ctx.fillStyle = nexusGrad;
+      ctx.beginPath();
+      ctx.arc(clashX, clashY, isMobile ? 45 : 80, 0, Math.PI * 2);
+      ctx.fill();
+
+      // 4. CẬP NHẬT SÓNG XUNG KÍCH (SHOCKWAVE RINGS)
+      for (let i = shockwaves.length - 1; i >= 0; i--) {
+        const sw = shockwaves[i];
+        sw.radius += (sw.maxRadius - sw.radius) * 0.08 + 2.2;
+        sw.alpha *= 0.93;
+
+        if (sw.alpha <= 0.02) {
+          shockwaves.splice(i, 1);
+          continue;
+        }
+
+        ctx.beginPath();
+        ctx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2);
+        ctx.strokeStyle = sw.color;
+        ctx.globalAlpha = sw.alpha;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+      }
+
+      // 5. CẬP NHẬT TIA LỬA VA CHẠM (PK IMPACT SPARKS)
+      for (let i = sparks.length - 1; i >= 0; i--) {
+        const sp = sparks[i];
+        sp.x += sp.vx;
+        sp.y += sp.vy;
+        sp.vx *= 0.96;
+        sp.vy *= 0.96;
+        sp.life -= sp.decay;
+
+        if (sp.life <= 0) {
+          sparks.splice(i, 1);
+          continue;
+        }
+
+        ctx.beginPath();
+        ctx.arc(sp.x, sp.y, sp.size, 0, Math.PI * 2);
+        ctx.fillStyle = sp.color;
+        ctx.globalAlpha = sp.life;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+
+      // 6. CẬP NHẬT MẠNG LƯỚI HẠT CHAKRA ĐỐI KHÁNG 2 BÊN
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
         p.x += p.vx;
         p.y += p.vy;
 
-        if (p.y < -10) {
-          p.y = height + 10;
-          p.x = Math.random() * width;
-        }
-        if (p.x < -10) p.x = width + 10;
-        if (p.x > width + 10) p.x = -10;
-
-        // Tương tác lực đẩy nhẹ khi di chuột lại gần
-        const dxMouse = p.x - mouse.x;
-        const dyMouse = p.y - mouse.y;
-        const distMouse = Math.hypot(dxMouse, dyMouse);
-        if (distMouse < 130 && distMouse > 0) {
-          p.x += (dxMouse / distMouse) * 1.2;
-          p.y += (dyMouse / distMouse) * 1.2;
-        }
+        if (p.side === "naruto" && p.x > width + 20) p.x = -10;
+        if (p.side === "sasuke" && p.x < -20) p.x = width + 10;
+        if (p.y < -15) p.y = height + 15;
+        if (p.y > height + 15) p.y = -15;
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = p.color;
         ctx.globalAlpha = p.alpha;
         ctx.fill();
-
-        // Vẽ tia liên kết năng lượng giữa các hạt gần nhau
-        for (let j = i + 1; j < particles.length; j++) {
-          const p2 = particles[j];
-          const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-          if (dist < 115) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = p.color;
-            ctx.globalAlpha = (1 - dist / 115) * 0.16;
-            ctx.lineWidth = 0.8;
-            ctx.stroke();
-          }
-        }
       }
+
+      ctx.globalAlpha = 1;
+      ctx.globalCompositeOperation = "source-over";
       requestAnimationFrame(render);
     }
-    render();
+
+    requestAnimationFrame(render);
   }
 
   function initLiveTelemetryMetrics() {
-    const ccuEl = document.getElementById("live-ccu");
     const pingEl = document.getElementById("live-ping");
 
     setInterval(() => {
-      if (ccuEl) {
-        const base = 14800 + Math.floor(Math.random() * 190);
-        ccuEl.textContent = base.toLocaleString("vi-VN");
-      }
       if (pingEl) {
         const ping = 10 + Math.floor(Math.random() * 5);
         pingEl.textContent = `${ping}ms`;
       }
     }, 3500);
-  }
-
-  function initGoldSimulator() {
-    const rangeInput = document.getElementById("sim-range");
-    const budgetDisplay = document.getElementById("sim-budget-display");
-    const goldOutput = document.getElementById("sim-gold-output");
-    const reqOutput = document.getElementById("sim-req-output");
-    const timeOutput = document.getElementById("sim-time-output");
-    const applyBtn = document.getElementById("sim-apply-btn");
-    const selectInput = document.getElementById("selected-plan-input");
-
-    if (!rangeInput) return;
-
-    const updateSimulator = () => {
-      const budget = Number(rangeInput.value);
-      budgetDisplay.textContent = `${budget.toLocaleString("vi-VN")} cá`;
-
-      let gold = 0;
-      let req = "5 - 10 phôi 450";
-      let time = "10 - 15 giờ (Luồng ưu tiên)";
-
-      if (budget <= 200000) {
-        gold = 400000;
-        req = "Ưu tiên 10 phôi 450";
-        time = "2 - 3 giờ (Siêu tốc)";
-      } else if (budget >= 4000000) {
-        gold = 15000000;
-        req = "Tối thiểu 20 ám 450";
-        time = "Hỗ trợ 1-1 trực tiếp bởi nhdinh";
-      } else {
-        // Chuẩn 400.000 cá = 1.200.000 Vàng (1 cá = 3 Vàng)
-        gold = budget * 3;
-      }
-
-      goldOutput.textContent = `${gold.toLocaleString("vi-VN")} Vàng`;
-      reqOutput.textContent = req;
-      timeOutput.textContent = time;
-    };
-
-    rangeInput.addEventListener("input", updateSimulator);
-    updateSimulator();
-
-    applyBtn?.addEventListener("click", () => {
-      const budget = Number(rangeInput.value);
-      if (selectInput) {
-        if (budget <= 200000) {
-          selectInput.value = "GÓI CƠ BẢN (200.000 cá - 400.000 Vàng)";
-        } else if (budget >= 4000000) {
-          selectInput.value =
-            "GÓI NÂNG CAO GOD TIER (4.000.000 cá - 15.000.000 Vàng)";
-        } else {
-          selectInput.value = "GÓI KHUYÊN DÙNG (400.000 cá - 1.200.000 Vàng)";
-        }
-        selectInput.dispatchEvent(new Event("change"));
-      }
-      showToast(
-        `Đã áp dụng mức ${budget.toLocaleString("vi-VN")} cá vào Trạm Đặt Đơn!`
-      );
-    });
   }
 
   function initRevealEffects() {
@@ -744,7 +890,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function initPlanSelectorAndOrder() {
     const planButtons = document.querySelectorAll(".btn-select-plan");
-    const clusterNodes = document.querySelectorAll(".cluster-node");
     const quickOrderBox = document.getElementById("quick-order-box");
     const selectInput = document.getElementById("selected-plan-input");
     const serverInput = document.getElementById("server-input");
@@ -805,20 +950,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    clusterNodes.forEach((node) => {
-      node.addEventListener("click", () => {
-        const srv = node.dataset.selectServer || "S62";
-        if (serverInput) {
-          serverInput.value = srv;
-          updateLivePreview();
-        }
-        document
-          .getElementById("contact")
-          ?.scrollIntoView({ behavior: "smooth" });
-        showToast(`Đã chọn cụm máy chủ ${srv}!`);
-      });
-    });
-
     planButtons.forEach((btn) => {
       btn.addEventListener("click", () => {
         const chosenPlan = btn.dataset.plan;
@@ -863,37 +994,6 @@ document.addEventListener("DOMContentLoaded", () => {
         showToast("STK: 19074486671011");
       }
     });
-  }
-
-  function initSystemModal() {
-    const modal = document.getElementById("overload-modal");
-    const openBtn = document.getElementById("open-rule-btn");
-    const closeX = document.getElementById("close-overload-x");
-    const closeBtn = document.getElementById("close-overload-btn");
-    const viewPlansBtn = document.getElementById("modal-view-plans-btn");
-
-    const showModal = () => modal?.classList.add("is-active");
-    const hideModal = () => {
-      modal?.classList.remove("is-active");
-      sessionStorage.setItem("nhdinh_rule_seen", "true");
-    };
-
-    openBtn?.addEventListener("click", showModal);
-    closeX?.addEventListener("click", hideModal);
-    closeBtn?.addEventListener("click", hideModal);
-    viewPlansBtn?.addEventListener("click", () => {
-      hideModal();
-      document
-        .getElementById("pricing")
-        ?.scrollIntoView({ behavior: "smooth" });
-    });
-
-    window.showOverloadAlert = showModal;
-    window.closeOverloadAlert = hideModal;
-
-    if (!sessionStorage.getItem("nhdinh_rule_seen")) {
-      showModal();
-    }
   }
 
   function initLiveTicker() {
@@ -945,46 +1045,6 @@ document.addEventListener("DOMContentLoaded", () => {
         title: "Khách hàng Server S81 • Vừa xong",
         desc: "Vừa chốt Gói Khuyên Dùng (+1.200.000 Vàng)",
       },
-      {
-        title: "Khách hàng Server S41 • 4 phút trước",
-        desc: "Đã nghiệm thu Gói Cơ Bản (+400.000 Vàng siêu tốc)",
-      },
-      {
-        title: "Khách hàng Server S18 • Vừa xong",
-        desc: "Vừa chốt Gói Khuyên Dùng (+1.200.000 Vàng)",
-      },
-      {
-        title: "Khách hàng Server S62 • 3 phút trước",
-        desc: "Vừa chốt Gói GOD TIER (Hỗ trợ 1-1 bởi nhdinh)",
-      },
-      {
-        title: "Khách hàng Server S35 • Vừa xong",
-        desc: "Đã nhận bàn giao 1.200.000 Vàng đúng tiến độ",
-      },
-      {
-        title: "Khách hàng Server S78 • 5 phút trước",
-        desc: "Đã bàn giao Gói Cơ Bản (+400.000 Vàng trong 2h10p)",
-      },
-      {
-        title: "Khách hàng Server S9 • Vừa xong",
-        desc: "Vừa đăng ký Gói Khuyên Dùng (Luồng ưu tiên VIP)",
-      },
-      {
-        title: "Khách hàng Server S51 • 3 phút trước",
-        desc: "Đã nghiệm thu Gói GOD TIER (+15.000.000 Vàng)",
-      },
-      {
-        title: "Khách hàng Server S74 • 2 phút trước",
-        desc: "Vừa chốt Gói Cơ Bản (Có sẵn 10 phôi 450)",
-      },
-      {
-        title: "Khách hàng Server S29 • Vừa xong",
-        desc: "Đã hoàn tất Gói Khuyên Dùng (+1.200.000 Vàng)",
-      },
-      {
-        title: "Khách hàng Server S80 • 4 phút trước",
-        desc: "Đã bàn giao 1.200.000 Vàng (An toàn tuyệt đối)",
-      },
     ];
 
     const shuffledEvents = [...events].sort(() => Math.random() - 0.5);
@@ -1023,13 +1083,11 @@ document.addEventListener("DOMContentLoaded", () => {
   initLanguageSwitcher();
   initHeaderScrollAndSpy();
   initSpotlightAndTilt();
-  initChakraParticles();
+  initNarutoSasukePKBattle();
   initLiveTelemetryMetrics();
-  initGoldSimulator();
   initRevealEffects();
   initCounters();
   initShowcaseModal();
   initPlanSelectorAndOrder();
-  initSystemModal();
   initLiveTicker();
 });

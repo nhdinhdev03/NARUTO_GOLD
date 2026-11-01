@@ -21,47 +21,16 @@
     />
   </head>
   <body>
-    <!-- Quầng sáng con trỏ chuột & Mạng lưới hạt Chakra tương tác 60FPS -->
-    <div id="cursor-aura" aria-hidden="true"></div>
-    <canvas id="chakra-canvas" aria-hidden="true"></canvas>
-    <div class="ambient-grid" aria-hidden="true"></div>
-    <div class="ambient-glow glow-1" aria-hidden="true"></div>
-    <div class="ambient-glow glow-2" aria-hidden="true"></div>
-
-    <!-- Thanh trạng thái Enterprise phía trên cùng -->
-    <div class="system-topbar">
-      <div class="container topbar-inner">
-        <div class="topbar-status">
-          <span class="status-indicator"></span>
-          <span data-i18n="topbar.status"
-            >ENTERPRISE NETWORK: 81/81 CLUSTERS (S1 - S81) ONLINE • 10M+
-            USERS</span
-          >
-        </div>
-        <div class="topbar-meta">
-          <span class="topbar-ccu">
-            🔥 <strong id="live-ccu">14.820</strong> đang giao dịch
-          </span>
-          <button type="button" class="topbar-rule-btn" id="open-rule-btn">
-            <svg
-              viewBox="0 0 24 24"
-              width="14"
-              height="14"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.2"
-            >
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="12" y1="8" x2="12" y2="12"></line>
-              <line x1="12" y1="16" x2="12.01" y2="16"></line>
-            </svg>
-            <span data-i18n="topbar.requirement"
-              >Quy định phôi: Tối thiểu 5 - 10 phôi 450</span
-            >
-          </button>
-        </div>
-      </div>
+    <!-- NỀN ĐỘNG NARUTO VS SASUKE PK (RASENGAN VS CHIDORI 60FPS) -->
+    <div class="pk-battle-stage" aria-hidden="true">
+      <div class="pk-art-backdrop"></div>
+      <div class="pk-aura pk-aura-naruto"></div>
+      <div class="pk-aura pk-aura-sasuke"></div>
+      <div class="pk-clash-horizon"></div>
+      <div class="ambient-grid"></div>
     </div>
+    <canvas id="chakra-canvas" aria-hidden="true"></canvas>
+    <div id="cursor-aura" aria-hidden="true"></div>
 
     <!-- HEADER: Chỉ giữ đúng 4 mục chính DỊCH VỤ • BẢNG GIÁ • KẾT QUẢ • LIÊN HỆ -->
     <header class="site-header" id="site-header">
@@ -237,7 +206,7 @@
                 class="btn btn-secondary magnetic-btn"
                 data-i18n="cta.view_pricing"
               >
-                Trạm tính vàng & Bảng giá
+                Khám phá Bảng giá VIP
               </a>
             </div>
 
@@ -457,87 +426,12 @@
               <p data-i18n="trust.compensation">Cam kết đền bù nếu vi phạm</p>
             </div>
           </div>
-
-          <!-- RADAR TRẠNG THÁI CỤM MÁY CHỦ S1 - S81 (TƯƠNG TÁC TRỰC TIẾP) -->
         </div>
       </section>
 
-      <!-- 2. BẢNG GIÁ (#pricing) -->
+      <!-- 2. BẢNG GIÁ (#pricing) - ĐÃ LOẠI BỎ TIÊU ĐỀ CŨ & GOLD CALCULATOR -->
       <section id="pricing" class="section nav-section">
         <div class="container">
-          <div class="section-header center animate">
-            <span class="section-tag" data-i18n="pricing.plans_label"
-              >PRICING & GOLD SIMULATOR</span
-            >
-            <h2 data-i18n="pricing.title">Bảng giá niêm yết chuẩn 2026</h2>
-            <p class="section-note" data-i18n="pricing.note">
-              Áp dụng đồng nhất trên toàn bộ máy chủ S1 – S81. Cam kết đúng tiến
-              độ và bảo hiểm 100%.
-            </p>
-          </div>
-
-          <!-- TRẠM TÍNH VÀNG TƯƠNG TÁC (INTERACTIVE GOLD CALCULATOR) -->
-          <div class="gold-simulator holo-card spotlight-card animate">
-            <div class="sim-left">
-              <div class="sim-badge">⚡ INTERACTIVE GOLD CALCULATOR</div>
-              <h3 data-i18n="sim.title">
-                Ước tính nhanh sản lượng Vàng & Chi phí
-              </h3>
-              <p data-i18n="sim.desc">
-                Kéo thanh trượt để mô phỏng ngân sách dự kiến theo tỷ lệ chuẩn
-                <strong>400.000 cá = 1.200.000 Vàng</strong>.
-              </p>
-
-              <div class="sim-slider-wrap">
-                <div class="sim-slider-labels">
-                  <span>Ngân sách dự kiến:</span>
-                  <strong id="sim-budget-display">400.000 cá</strong>
-                </div>
-                <input
-                  type="range"
-                  id="sim-range"
-                  min="200000"
-                  max="4000000"
-                  step="200000"
-                  value="400000"
-                  aria-label="Thanh trượt ngân sách"
-                />
-                <div class="sim-steps">
-                  <span>200K cá</span>
-                  <span>400K (Chuẩn)</span>
-                  <span>2M cá</span>
-                  <span>4M cá (GOD TIER)</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="sim-right">
-              <div class="sim-result-grid">
-                <div class="sim-stat">
-                  <span>Tổng Vàng nhận được</span>
-                  <strong id="sim-gold-output" class="sim-gold-val"
-                    >1.200.000 Vàng</strong
-                  >
-                </div>
-                <div class="sim-stat">
-                  <span>Yêu cầu chuẩn bị</span>
-                  <strong id="sim-req-output">5 - 10 phôi 450</strong>
-                </div>
-                <div class="sim-stat">
-                  <span>Thời gian hoàn tất</span>
-                  <strong id="sim-time-output">10 - 15 giờ (Ưu tiên)</strong>
-                </div>
-              </div>
-              <a
-                href="#contact"
-                class="btn btn-primary btn-shimmer sim-cta-btn"
-                id="sim-apply-btn"
-              >
-                Áp dụng mức này & Đặt đơn ngay →
-              </a>
-            </div>
-          </div>
-
           <div class="pricing-grid">
             <!-- GÓI CƠ BẢN -->
             <article class="pricing-card basic spotlight-card animate">
@@ -1286,79 +1180,6 @@
               Ảnh tiếp →
             </button>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- MODAL THÔNG BÁO HỆ THỐNG (QUY ĐỊNH PHÔI) -->
-    <div
-      id="overload-modal"
-      class="modal-overlay"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="overload-modal-title"
-    >
-      <div class="custom-modal holo-card">
-        <div class="modal-header">
-          <div class="modal-title-group">
-            <div class="modal-warn-icon">
-              <svg
-                viewBox="0 0 24 24"
-                width="22"
-                height="22"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.2"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-                />
-              </svg>
-            </div>
-            <h3 id="overload-modal-title">THÔNG BÁO ĐIỀU PHỐI HỆ THỐNG</h3>
-          </div>
-          <button
-            class="modal-close"
-            type="button"
-            aria-label="Close"
-            id="close-overload-x"
-          >
-            ✕
-          </button>
-        </div>
-
-        <div class="modal-body">
-          <p>
-            Để đảm bảo tốc độ xử lý nhanh nhất trên toàn cụm máy chủ
-            <strong>S1 – S81</strong>, quý khách cần chuẩn bị tối thiểu
-            <strong>5 - 10 phôi 450</strong> theo tiêu chuẩn vận hành hiện tại.
-          </p>
-          <p>
-            Nếu tài khoản đã đủ điều kiện phôi, vui lòng chọn gói bên dưới hoặc
-            liên hệ trực tiếp qua Zalo để kích hoạt luồng ưu tiên VIP.
-          </p>
-          <span class="modal-alert-text">
-            ⚡ Liên Hệ trực tiếp Zalo: <a>0389037257</a>
-          </span>
-        </div>
-
-        <div class="modal-actions">
-          <button
-            class="btn btn-secondary"
-            type="button"
-            id="close-overload-btn"
-          >
-            Đã hiểu & Đóng
-          </button>
-          <button
-            class="btn btn-primary btn-shimmer"
-            type="button"
-            id="modal-view-plans-btn"
-          >
-            Khám phá Bảng giá ngay
-          </button>
         </div>
       </div>
     </div>
